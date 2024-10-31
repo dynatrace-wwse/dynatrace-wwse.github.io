@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-03-09T19:01:20+01:00",
+  "id": "bizops-easytravel",
+  "duration": 136,
+  "title": "BizOps with Easytravel",
+  "authors": "Sergio Hinojosa",
+  "summary": "BizOps with Easytravel",
+  "source": "codelabs/markdown/bizops-easytravel/README.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "bizops"
+  ],
+  "tags": [
+    "bizops"
+  ],
+  "url": "bizops-easytravel"
+}

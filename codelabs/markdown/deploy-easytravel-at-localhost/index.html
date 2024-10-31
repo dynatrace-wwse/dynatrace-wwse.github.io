@@ -1,0 +1,82 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Deploying Easytravel at Localhost</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="deploy-easytravel-at-localhost"
+                  title="Deploying Easytravel at Localhost"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="3">
+        <p>for learning, and playing around there is nothing better than having a separate VM that you can break. This can be either an instance in a cloud provider or a virtual machine @ localhost. On your working station you can use a docker container with an ubuntu image or https://multipass.run/. Multipass is a great way to instantiate Ubuntu VMs and runs on Linux, Mac and Windows. it&#39;s made by the Ubuntu team highly optimized.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Multipass Comands" duration="5">
+        <h2 is-upgraded>Show the help</h2>
+<pre><code>multipass -h
+</code></pre>
+<h2 is-upgraded>Start a VM with x size</h2>
+<pre><code>multipass launch --name easytravel --mem 4G --disk 10G --cpus 2
+</code></pre>
+<h2 is-upgraded>Start the VM</h2>
+<pre><code>multipass start &lt;vm-name&gt;
+</code></pre>
+<h2 is-upgraded>Stop the VM</h2>
+<pre><code>multipass stop &lt;vm-name&gt;
+</code></pre>
+<h2 is-upgraded>List VMS</h2>
+<pre><code>multipass list
+</code></pre>
+<h2 is-upgraded>Shell into the VM</h2>
+<pre><code>multipass shell &lt;vm-name&gt; 
+</code></pre>
+<p>you can also shell into the vm with the ip but you need to set a password for the user ubuntu and enable password on the SSH service</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Installation steps for Easytravel on Ubuntu (Multipass)" duration="10">
+        <h2 is-upgraded>Create VM</h2>
+<p>Download multipass and install it depending on your OS https://multipass.run/</p>
+<p>Create a VM with the proper sizing.</p>
+<pre><code>multipass launch --name easytravel --mem 4G --disk 10G --cpus 2
+</code></pre>
+<h2 is-upgraded>Start EasyTravel</h2>
+<p>multipass start easytravel</p>
+<pre><code>multipass launch --name easytravel --mem 4G --disk 10G --cpus 2
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

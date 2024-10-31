@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-03-09T19:09:55+01:00",
+  "id": "kubernetes-deepdive",
+  "duration": 5,
+  "title": "Kubernetes Deepdive",
+  "authors": "sergio.hinojosa",
+  "summary": "Kubernetes deepdive",
+  "source": "codelabs/markdown/kubernetes-deepdive/README.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "kubernetes"
+  ],
+  "tags": [
+    "kubernetes"
+  ],
+  "url": "kubernetes-deepdive"
+}

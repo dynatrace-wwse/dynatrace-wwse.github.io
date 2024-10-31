@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-03-09T19:02:50+01:00",
+  "id": "dem-101",
+  "duration": 10,
+  "title": "DEM 101",
+  "authors": "sergio.hinojosa",
+  "summary": "DEM 101",
+  "source": "codelabs/markdown/onboarding-dem-101/README.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "onboarding"
+  ],
+  "tags": [
+    "dem",
+    "onboarding"
+  ],
+  "url": "dem-101"
+}

@@ -1,0 +1,28 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-03-09T15:33:42+01:00",
+  "id": "deploy-easytravel-at-localhost",
+  "duration": 18,
+  "title": "Deploying Easytravel at Localhost",
+  "authors": "sergio.hinojosa",
+  "summary": "Deploy Easytravel @ localhost",
+  "source": "easytravel-localhost/README.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "dem",
+    "localhost",
+    "easytravel"
+  ],
+  "tags": [
+    "dem",
+    "easytravel",
+    "localhost"
+  ],
+  "url": "deploy-easytravel-at-localhost"
+}

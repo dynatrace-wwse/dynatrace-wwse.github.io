@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-03-09T19:11:11+01:00",
+  "id": "troubleshooting-dynatrace-oa-operator",
+  "duration": 0,
+  "title": "Troubleshooting Dynatrace OneAgent Operator",
+  "authors": "sergio.hinojosa",
+  "summary": "Troubleshooting Dynatrace OneAgent Operator",
+  "source": "codelabs/markdown/troubleshooting-dynatrace-operator/README.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "kubernetes",
+    "installation"
+  ],
+  "tags": [
+    "installation",
+    "kubernetes"
+  ],
+  "url": "troubleshooting-dynatrace-oa-operator"
+}

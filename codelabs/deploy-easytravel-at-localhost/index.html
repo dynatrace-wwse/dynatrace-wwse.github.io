@@ -1,0 +1,182 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Deploying Easytravel @ 127.0.0.1</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="deploy-easytravel-at-localhost"
+                  title="Deploying Easytravel @ 127.0.0.1"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="3">
+        <p>for learning, and playing around there is nothing better than having a separate VM that you can break. This can be either an instance in a cloud provider or a virtual machine @ localhost. On your working station you can use a docker container with an ubuntu image or https://multipass.run/. Multipass is a great way to instantiate Ubuntu VMs and runs on Linux, Mac and Windows. it&#39;s made by the Ubuntu team highly optimized.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Multipass Comands" duration="5">
+        <h2 is-upgraded>Download &amp; Install</h2>
+<p>Download multipass and install it depending on your OS https://multipass.run/</p>
+<h2 is-upgraded>Show the help</h2>
+<pre><code>multipass -h
+</code></pre>
+<h2 is-upgraded>Start a VM with x size</h2>
+<pre><code>multipass launch --name &lt;vm-name&gt; --mem 4G --disk 10G --cpus 2
+</code></pre>
+<h2 is-upgraded>Start the VM</h2>
+<pre><code>multipass start &lt;vm-name&gt;
+</code></pre>
+<h2 is-upgraded>Stop the VM</h2>
+<pre><code>multipass stop &lt;vm-name&gt;
+</code></pre>
+<h2 is-upgraded>List VMS</h2>
+<pre><code>multipass list
+</code></pre>
+<h2 is-upgraded>Shell into the VM</h2>
+<p>you can also shell into the vm with the ip but you need to set a password for the user ubuntu and enable password on the SSH service</p>
+<pre><code>multipass shell &lt;vm-name&gt; 
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Install  Easytravel" duration="10">
+        <h2 is-upgraded>Create VM</h2>
+<pre><code>multipass launch --name easytravel --mem 4G --disk 10G --cpus 2
+</code></pre>
+<h2 is-upgraded>Start VM</h2>
+<pre><code>multipass start easytravel
+</code></pre>
+<h2 is-upgraded>Shell into VM</h2>
+<pre><code>multipass shell easytravel
+</code></pre>
+<h2 is-upgraded>Download install script</h2>
+<p>Download help script to install Easytravel, Nginx, Docker and other utils</p>
+<pre><code>wget https://raw.githubusercontent.com/sergiohinojosa/Dynatrace-REST-Tenant-Automation/master/aws/ubuntu-setup-easytravel.sh
+</code></pre>
+<h2 is-upgraded>Make the log visible also on the console</h2>
+<pre><code>sed -i &#39;s/pipe_log=true/pipe_log=false/g&#39; ubuntu-setup-easytravel.sh
+</code></pre>
+<h2 is-upgraded>(Optional) Let it install the OneAgent</h2>
+<aside class="special"><p>If you want that the script installs the OneAgent for you before installing easyTRavel and the docker containers, just add the variables at the top</p>
+</aside>
+<pre><code>## Set TENANT and API TOKEN
+# ---- Define Dynatrace Environment ----
+# Sample: https://{your-domain}/e/{your-environment-id} for managed or https://{your-environment-id}.live.dynatrace.com for SaaS
+TENANT=
+PAASTOKEN=
+APITOKEN=
+</code></pre>
+<h2 is-upgraded>Execute script</h2>
+<p>run the command as root for installing also utils as docker, in the VM you have a docker server where you can spin containers also easily. The script will install easytravel start it and it wll also install the BankJob (a java app for learning how the basline of Davis works) and an NGINX reverse proxy that routes the traffic of EasyTravel Angular to port 80.</p>
+<pre><code>sudo su;
+sh ubuntu-setup-easytravel.sh;
+</code></pre>
+<h2 is-upgraded>Verify the log of Easytravel</h2>
+<p>This is optional just for you to know where the output of Easytravel is being piped out. Each Easytravel component writes is logs. You can check them on the Admin console of Easytravel</p>
+<pre><code>less +F /tmp/weblauncher.log
+</code></pre>
+<h2 is-upgraded>Check running containers</h2>
+<p>Docker is installed on the system. There are two running containers, one is a java app called &#34;BankJob&#34; another is nginx working as a reverse proxy for multiple endpoints of Easytravel</p>
+<pre><code>docker ps
+</code></pre>
+<h2 is-upgraded>stop all containers</h2>
+<pre><code>docker stop reverseproxy bankjob
+</code></pre>
+<h2 is-upgraded>start all containers</h2>
+<pre><code>docker start reverseproxy bankjob
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Loadgenerator for easyTravel" duration="5">
+        <p>The load generation for EasyTravel is defined in the <code>easyTravelConfig.properties</code> file which is setted up during the installation. The properties starting with <code>config.baseLoad..</code>  are the ones defining <a href="https://github.com/sergiohinojosa/Dynatrace-REST-Tenant-Automation/blob/master/aws/ubuntu-setup-easytravel.sh#L227" target="_blank">these values (changed at installation)</a>. Also you can manage set this values manually by accessing the <a href="http://easytravel/admin" target="_blank">http://easytravel/admin</a> interface and moving the slider manually.</p>
+<p>🟡 UserActions for easyTravel Classic and Angular use different Load generators, the one for classic (older and embedded in the web launcher process) is  detected by Dynatrace that are not real users and the Actions are displayed as requests (can be confirmed doing a backtrace from the Database). The load generator for Angular spins every time a chromium process and does a session based on a browser as you would. For fixing the UserActions for Classic just remove deep monitoring for the web launcher process.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Access endpoints" duration="0">
+        <h2 is-upgraded>http://easytravel</h2>
+<p class="image-container"><img alt="drawing" style="width: 350.00px" src="img/6f7da9a1906c3e86.png"></p>
+<h2 is-upgraded>http://easytravel/classic</h2>
+<aside class="warning"><p>Use port 8079 if you do a session booking or a loadtest. Classic does not like to be rewritten over a proxy. If you know how to solve this, please submit a PR.</p>
+</aside>
+<p class="image-container"><img alt="drawing" style="width: 350.00px" src="img/bdeb684fb99f5b6e.png"></p>
+<h2 is-upgraded>http://easytravel/admin</h2>
+<p class="image-container"><img alt="drawing" style="width: 350.00px" src="img/f0a3c0f65a2120ca.png"></p>
+<h2 is-upgraded>http://easytravel/amp</h2>
+<p class="image-container"><img alt="drawing" style="width: 350.00px" src="img/cf5bd594d821bfd7.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Troublehooting" duration="0">
+        <aside class="special"><p>Here are some tips on how to stop and start all easytravel processes.</p>
+</aside>
+<h2 is-upgraded>Kill all processes</h2>
+<pre><code>killall java
+</code></pre>
+<h2 is-upgraded>Start easyTravel as UBUNTU (not root)</h2>
+<p>If you happen to install easytravel as root, you might want to change recursively all the rights of the easytravel installation folder so all processes can run properly</p>
+<pre><code>sh /home/ubuntu/easytravel-2.0.0-x64/weblauncher/weblauncher.sh &gt; /tmp/weblauncher.log 2&gt;&amp;1 &amp;
+</code></pre>
+<h2 is-upgraded>Fix easyTravel rights</h2>
+<pre><code>chmod 755 -R /home/ubuntu/easytravel-2.0.0-x64/
+</code></pre>
+<h2 is-upgraded>Fix easyTravel ownership</h2>
+<pre><code>chown ubuntu:ubuntu -R /home/ubuntu/easytravel-2.0.0-x64/
+</code></pre>
+<h2 is-upgraded>Check if there are running easytravel leftovers (processes)</h2>
+<pre><code>ps -aux | grep easy
+</code></pre>
+<h2 is-upgraded>Restart all with a one-liner (must be root)</h2>
+<pre><code>sudo su;
+killall java; docker start reverseproxy bankjob; USER=ubuntu; su -c &#34;sh /home/$USER/easytravel-2.0.0-x64/weblauncher/weblauncher.sh &gt; /tmp/weblauncher.log 2&gt;&amp;1 &amp;&#34; $USER
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Tips &amp; Links" duration="0">
+        <h2 is-upgraded>Disable monitoring of launcher</h2>
+<aside class="warning"><p>You should disable monitoring of launcher (com.dynatrace.easytravel.launcher.jar easyTravel (x64)) processes.</p>
+</aside>
+<p>For RUM to work properly (for the classic app e.g. Loadgenerator) you need to disable deep monitoring for the weblauncher process.</p>
+<p>On the entity select edit...<br><img alt="drawing" style="width: 500.00px" src="img/4c854f5d35e8a0f8.png"></p>
+<p>Then disable monitoring for that process group instance...<br><img alt="drawing" style="width: 500.00px" src="img/d0d47c6108e5a9e2.png"></p>
+<h2 is-upgraded>easyTravel documentation</h2>
+<p><a href="https://confluence.dynatrace.com/community/display/DL/easyTravel" target="_blank">https://confluence.dynatrace.com/community/display/DL/easyTravel</a></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
