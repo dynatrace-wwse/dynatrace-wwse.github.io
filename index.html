@@ -139,8 +139,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-grid-lines {
   position: absolute; inset: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 80%);
 }
@@ -361,6 +361,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border: 1px solid rgba(0,180,222,.35);
   padding: .15rem .45rem; border-radius: 4px; text-transform: uppercase;
 }
+.badge-duration {
+  font-size: .65rem; font-weight: 600; letter-spacing: .04em;
+  background: var(--surface-2); color: var(--text-2);
+  border: 1px solid rgba(255,255,255,.2);
+  padding: .15rem .5rem; border-radius: 4px;
+  display: inline-flex; align-items: center; gap: .28rem;
+}
+.badge-duration svg { width: 9px; height: 9px; flex-shrink: 0; }
+.time-pill {
+  font-size: .72rem; font-weight: 700; color: var(--text-3);
+  background: var(--surface-2); border: 1px solid var(--border);
+  padding: .2rem .55rem; border-radius: 99px;
+  display: inline-flex; align-items: center; gap: .3rem;
+}
+.time-pill svg { width: 10px; height: 10px; flex-shrink: 0; opacity: .6; }
 
 .card-title { font-size: .975rem; font-weight: 700; color: var(--text); line-height: 1.35; }
 .card-desc { font-size: .83rem; color: var(--text-2); line-height: 1.65; flex: 1; }
@@ -571,6 +586,7 @@ footer {
   <div class="section-hd">
     <h2>All Enablements</h2>
     <span class="count-pill" id="count-label">11 shown</span>
+    <span class="time-pill" id="time-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>—</span>
     <div class="section-hd-right">
       <select class="sort-select" id="sort-select" aria-label="Sort by">
         <option value="default">Sort: Default</option>
@@ -677,6 +693,7 @@ const REPOS = [
     desc: 'Full-stack Kubernetes observability with OpenTelemetry. Instrument cloud-native workloads, collect distributed traces, metrics, and logs, and correlate with Dynatrace topology.',
     tags: ['kubernetes','opentelemetry'],
     primaryTag: 'kubernetes',
+    duration: '3h',
   },
   {
     repo: 'enablement-gen-ai-llm-observability',
@@ -684,6 +701,7 @@ const REPOS = [
     desc: 'Observe GenAI and LLM workloads end-to-end. Trace AI pipelines, monitor token usage and latency, and detect anomalies in AI-driven applications with Dynatrace.',
     tags: ['gen-ai'],
     primaryTag: 'gen-ai',
+    duration: '2h',
   },
   {
     repo: 'enablement-business-observability',
@@ -691,6 +709,7 @@ const REPOS = [
     desc: 'Leverage Dynatrace BizEvents and dashboards to connect technical performance with real business outcomes. KPI tracking, funnel analysis, and custom business metrics.',
     tags: ['business-observability'],
     primaryTag: 'business-observability',
+    duration: '3h',
   },
   {
     repo: 'enablement-dql-301',
@@ -698,6 +717,7 @@ const REPOS = [
     desc: 'Master the Dynatrace Query Language at an advanced level. Build powerful cross-signal queries spanning logs, traces, metrics and business events.',
     tags: ['logs','business-observability','kubernetes'],
     primaryTag: 'logs',
+    duration: '1h',
   },
   {
     repo: 'enablement-dynatrace-log-ingest-101',
@@ -705,6 +725,7 @@ const REPOS = [
     desc: 'Introduction to log ingestion and analytics. Learn how to ingest, parse, and analyse logs at scale using OpenPipeline and Dynatrace DQL.',
     tags: ['logs','kubernetes'],
     primaryTag: 'logs',
+    duration: '2h',
   },
   {
     repo: 'enablement-browser-dem-biz-observability',
@@ -712,6 +733,7 @@ const REPOS = [
     desc: 'Browser Digital Experience Monitoring combined with business observability. Correlate real-user sessions with business KPIs in a single unified view.',
     tags: ['rum','business-observability'],
     primaryTag: 'rum',
+    duration: '2h',
   },
   {
     repo: 'enablement-live-debugger-bug-hunting',
@@ -719,6 +741,7 @@ const REPOS = [
     desc: 'Diagnose production issues in real-world scenarios using Dynatrace Live Debugger — no redeploys, no restarts. Step through running code with full observability context.',
     tags: ['live-debugger','devops'],
     primaryTag: 'live-debugger',
+    duration: '2h',
   },
   {
     repo: 'enablement-workflow-essentials',
@@ -726,6 +749,7 @@ const REPOS = [
     desc: 'Build automated remediation, alerting, and integration workflows using the Dynatrace Workflow engine. From simple notifications to complex multi-step automations.',
     tags: ['workflows'],
     primaryTag: 'workflows',
+    duration: '2.5h',
   },
   {
     repo: 'workshop-dynatrace-log-analytics',
@@ -733,6 +757,7 @@ const REPOS = [
     desc: 'Workshop-format hands-on lab for log analytics. From ingestion to root-cause analysis — master the full log management lifecycle with Dynatrace.',
     tags: ['logs','kubernetes'],
     primaryTag: 'logs',
+    duration: '3h',
   },
   {
     repo: 'bug-busters',
@@ -740,6 +765,7 @@ const REPOS = [
     desc: 'Gamified bug hunting and troubleshooting challenges. Race against the clock to find and fix production issues across a realistic microservices environment.',
     tags: ['live-debugger','devops'],
     primaryTag: 'live-debugger',
+    duration: '1.5h',
   },
   {
     repo: 'enablement-codespaces-template',
@@ -748,6 +774,7 @@ const REPOS = [
     tags: ['devops'],
     primaryTag: 'devops',
     isTemplate: true,
+    duration: '1h',
   },
   {
     repo: 'demo-agentic-ai-with-nvidia',
@@ -755,6 +782,7 @@ const REPOS = [
     desc: 'Hands-on demo showcasing agentic AI workflows powered by NVIDIA with full Dynatrace observability. Trace AI agents end-to-end, monitor model performance, and detect issues in real-time.',
     tags: ['gen-ai','application-security'],
     primaryTag: 'gen-ai',
+    duration: '1.5h',
   },
   {
     repo: 'remote-environment',
@@ -762,6 +790,7 @@ const REPOS = [
     desc: 'Provision and manage remote Dynatrace environments for distributed enablement scenarios. Streamline setup, configuration, and teardown of fully instrumented remote workspaces.',
     tags: ['devops','kubernetes'],
     primaryTag: 'devops',
+    duration: '2h',
   },
   {
     repo: 'demo-mcp-unguard',
@@ -769,6 +798,7 @@ const REPOS = [
     desc: 'Security-focused demo using Model Context Protocol with the Unguard intentionally vulnerable application. Explore threat detection, attack surface analysis, and application security with Dynatrace.',
     tags: ['application-security','gen-ai'],
     primaryTag: 'application-security',
+    duration: '1h',
   },
 ];
 
@@ -828,6 +858,12 @@ function fmt(n) {
   if (n >= 1000) return (n/1000).toFixed(1)+'k';
   return String(n);
 }
+function parseDuration(d) { return d ? parseFloat(d) : 0; }
+function fmtDuration(h) {
+  if (!h) return '—';
+  const w = Math.floor(h), m = Math.round((h - w) * 60);
+  return m ? `${w}h ${m}m` : `${w}h`;
+}
 
 // ── Render ───────────────────────────────────────────────────────
 function renderCard(r, delay) {
@@ -851,6 +887,7 @@ function renderCard(r, delay) {
   }).join('');
 
   const badgesHtml = [
+    r.duration    ? `<span class="badge-duration"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${r.duration}</span>` : '',
     r.isTemplate ? `<span class="badge-template">Template</span>` : '',
     fresh        ? `<span class="badge-new">New</span>` : '',
   ].filter(Boolean).join('');
@@ -940,6 +977,14 @@ function rebuildGrid() {
   });
 
   document.getElementById('count-label').textContent = `${shown} shown`;
+  const totalHrs = repos
+    .filter(r => {
+      const tagMatch = activeFilter === 'all' || r.tags.includes(activeFilter);
+      const q = searchQuery;
+      return tagMatch && (!q || r.title.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q) || r.tags.some(t => t.includes(q)) || r.repo.includes(q));
+    })
+    .reduce((sum, r) => sum + parseDuration(r.duration), 0);
+  document.getElementById('time-label').lastChild.textContent = fmtDuration(totalHrs);
   empty.classList.toggle('show', shown === 0);
 }
 
