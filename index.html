@@ -139,8 +139,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-grid-lines {
   position: absolute; inset: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 80%);
 }
@@ -397,30 +397,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .card-footer {
   padding: 0 1.5rem 1.35rem;
-  display: flex; gap: .5rem; align-items: center;
+  display: flex; gap: .4rem; align-items: center;
 }
 .card-btn {
   display: inline-flex; align-items: center; gap: .35rem;
-  padding: .45rem 1rem; border-radius: var(--r-sm);
-  font-size: .8rem; font-weight: 600;
+  padding: .42rem .85rem; border-radius: var(--r-sm);
+  font-size: .78rem; font-weight: 600;
   transition: all .15s var(--ease);
-}
-.card-btn-primary {
-  background: color-mix(in srgb, var(--cat-color, var(--accent)) 22%, transparent);
-  color: var(--cat-color, var(--accent));
-  border: 1px solid color-mix(in srgb, var(--cat-color, var(--accent)) 40%, transparent);
-  filter: brightness(1.1);
-}
-.card-btn-primary:hover {
-  background: var(--cat-color, var(--accent)); color: #fff; filter: brightness(1.15);
-  box-shadow: 0 4px 16px color-mix(in srgb, var(--cat-color, var(--accent)) 40%, transparent);
-}
-.card-btn-ghost {
   background: var(--surface-2); color: var(--text-2);
   border: 1px solid rgba(255,255,255,.2);
 }
-.card-btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,.32); background: var(--surface-3); }
-.card-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+.card-btn:hover { color: var(--text); border-color: rgba(255,255,255,.32); background: var(--surface-3); }
+.card-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
 
 /* empty state */
 #empty {
@@ -537,6 +525,10 @@ footer {
       <div class="hstat">
         <span class="hstat-value" id="stat-stars">—</span>
         <span class="hstat-label">Total Stars</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-value" id="stat-pulls">—</span>
+        <span class="hstat-label">Docker Pulls</span>
       </div>
     </div>
   </div>
@@ -767,7 +759,7 @@ const REPOS = [
     repo: 'remote-environment',
     title: 'Remote Environment',
     desc: 'Provision and manage remote Dynatrace environments for distributed enablement scenarios. Streamline setup, configuration, and teardown of fully instrumented remote workspaces.',
-    tags: ['devops','application-security'],
+    tags: ['devops','kubernetes'],
     primaryTag: 'devops',
   },
   {
@@ -888,6 +880,7 @@ function renderCard(r, delay) {
   el.dataset.stars = stars ?? 0;
   el.dataset.updated = updatedAt ?? '';
   el.style.cssText = `--cat-color:${catColor}; animation-delay:${delay}ms`;
+  const csUrl = `https://codespaces.new/${GH_ORG}/${r.repo}`;
   el.innerHTML = `
     <div class="card-accent"></div>
     <div class="card-inner">
@@ -903,13 +896,17 @@ function renderCard(r, delay) {
       ${statsHtml}
     </div>
     <div class="card-footer">
-      <a class="card-btn card-btn-primary" href="${ghUrl}" target="_blank" rel="noopener">
+      <a class="card-btn" href="${ghUrl}" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
         Open
       </a>
-      <a class="card-btn card-btn-ghost" href="${docsUrl}" target="_blank" rel="noopener">
+      <a class="card-btn" href="${docsUrl}" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         Docs
+      </a>
+      <a class="card-btn" href="${csUrl}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><polyline points="9 8 5 12 9 16"/><polyline points="15 8 19 12 15 16"/></svg>
+        Codespace
       </a>
     </div>`;
   return el;
@@ -1027,6 +1024,20 @@ async function fetchGithubStats() {
 }
 
 fetchGithubStats();
+
+async function fetchDockerStats() {
+  try {
+    const res = await fetch('https://hub.docker.com/v2/repositories/shinojosa/dt-enablement');
+    if (!res.ok) return;
+    const d = await res.json();
+    const pulls = d.pull_count;
+    if (pulls !== undefined) {
+      document.getElementById('stat-pulls').textContent = fmt(pulls);
+    }
+  } catch(_) {}
+}
+
+fetchDockerStats();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
@@ -1035,9 +1046,9 @@ particlesJS('particles-js', {
     "number": { "value": 60, "density": { "enable": true, "value_area": 600 } },
     "color": { "value": "#00b4de" },
     "shape": { "type": "circle" },
-    "opacity": { "value": 0.45, "random": true },
+    "opacity": { "value": 0.8, "random": true },
     "size": { "value": 3, "random": true },
-    "line_linked": { "enable": true, "distance": 130, "color": "#00b4de", "opacity": 0.25, "width": 1 },
+    "line_linked": { "enable": true, "distance": 130, "color": "#00b4de", "opacity": 0.45, "width": 1 },
     "move": { "enable": true, "speed": 2.5, "direction": "none", "random": true, "out_mode": "out" }
   },
   "interactivity": {
