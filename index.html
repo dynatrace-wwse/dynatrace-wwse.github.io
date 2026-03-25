@@ -1,213 +1,960 @@
-
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="The Dynatrace Sales Engineering CodeLabs provide a guided, tutorial-based hands-on learning experience. These labs will provide sessions that are presented by the Dynatrace Sales Engineering team during Technical Workshops but are also feasible for self-learning. Please reach out to sales-engineering@dynatrace.com if you have other questions.">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Dynatrace Sales Engineering Codelabs">
-<meta name="application-name" content="Dynatrace Sales Engineering Codelabs">
-<link rel="canonical" href="https://example.com/">
-<link rel="preconnect" href="https://www.google-analytics.com">
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-49880327-14', 'auto');
-    ga('send', 'pageview');
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-<title>Dynatrace Sales Engineering Codelabs</title>
-<link rel="stylesheet" href="/styles/main.css">
-<link rel="import" href="/elements/elements.html">
-<style is="custom-style">
-:root{--paper-tabs-selection-bar-color:currentcolor;--paper-input-container-underline:{display:none};--paper-input-container-underline-focus:{display:none};}.dropdown-filter{--paper-input-container:{padding:8px}} </style>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#455a64">
-<meta name="apple-mobile-web-app-title" content="Dynatrace Sales Engineering Codelabs">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+<title>WWSE Enablement Hub · Dynatrace</title>
+<meta name="description" content="Hands-on enablements and workshops by the Dynatrace Worldwide Sales Engineering team. Powered by the Codespaces Framework.">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#455a64">
-<meta name="msapplication-TileColor" content="#455a64">
-<meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
-<meta name="theme-color" content="#455a64">
-<meta name="og:type" property="og:type" content="website">
-<meta name="og:title" property="og:title" content="Dynatrace Sales Engineering Codelabs">
-<meta name="og:description" property="og:description" content="The Dynatrace Sales Engineering CodeLabs provide a guided, tutorial-based hands-on learning experience. These labs will provide sessions that are presented by the Dynatrace Sales Engineering team during Technical Workshops but are also feasible for self-learning. Please reach out to sales-engineering@dynatrace.com if you have other questions.">
-<meta name="og:url" property="og:url" content="https://example.com/">
-<meta name="og:site_name" property="og:site_name" content="Codelabs">
-<meta name="og:determiner" property="og:determiner" content="the">
-<meta name="og:locale" property="og:locale" content="en_US">
-<meta name="og:image" property="og:image" content="/images/og-image.png">
-<meta name="og:image:url" property="og:image:url" content="/images/og-image.png">
-<meta name="og:image:type" property="og:image:type" content="image/png">
-<meta name="og:image:width" property="og:image:width" content="1200">
-<meta name="og:image:height" property="og:image:height" content="1200">
-<meta name="og:image:alt" property="og:image:alt" content="Codelabs">
-<meta name="twitter:card" property="twitter:card" content="summary_large_image">
-<meta name="twitter:title" property="twitter:title" content="Dynatrace Sales Engineering Codelabs">
-<meta name="twitter:description" property="twitter:description" content="The Dynatrace Sales Engineering CodeLabs provide a guided, tutorial-based hands-on learning experience. These labs will provide sessions that are presented by the Dynatrace Sales Engineering team during Technical Workshops but are also feasible for self-learning. Please reach out to sales-engineering@dynatrace.com if you have other questions.">
-<meta name="twitter:image" property="twitter:image" content="/images/og-image.png">
-<meta name="twitter:url" property="twitter:url" content="https://example.com/">
+<meta name="theme-color" content="#080c14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WWSE Enablement Hub · Dynatrace">
+<meta property="og:description" content="Hands-on enablements and workshops by the Dynatrace Worldwide Sales Engineering team.">
+<meta property="og:url" content="https://dynatrace-wwse.github.io/">
+<style>
+/* ─── Tokens ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #080c14;
+  --surface:     #0f1623;
+  --surface-2:   #141c2b;
+  --surface-3:   #1a2336;
+  --border:      rgba(255,255,255,.07);
+  --border-soft: rgba(255,255,255,.04);
+  --text:        #e2e8f2;
+  --text-2:      #94a3b8;
+  --text-3:      #4e6278;
+  --accent:      #00b4de;
+  --accent-glow: rgba(0,180,222,.18);
+
+  --c-kubernetes:             #4f8ef7;
+  --c-opentelemetry:          #f59e0b;
+  --c-rum:                    #06b6d4;
+  --c-logs:                   #a78bfa;
+  --c-business-observability: #34d399;
+  --c-live-debugger:          #f87171;
+  --c-workflows:              #fb923c;
+  --c-gen-ai:                 #c084fc;
+  --c-devops:                 #64748b;
+
+  --r: 12px;
+  --r-sm: 7px;
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ─── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 99px; }
+
+/* ─── Topbar ──────────────────────────────────────────────────── */
+#topbar {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(8,12,20,.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+}
+.tb-inner {
+  max-width: 1280px; margin: 0 auto;
+  height: 58px; display: flex; align-items: center; gap: 1rem;
+}
+.tb-logo {
+  display: flex; align-items: center; gap: .65rem; flex-shrink: 0;
+  margin-right: .5rem;
+}
+.tb-logo img { height: 26px; }
+.tb-wordmark {
+  font-size: .78rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-2);
+  padding-left: .75rem;
+  border-left: 1px solid var(--border);
+}
+.tb-wordmark span { color: var(--text); }
+
+.tb-search {
+  flex: 1; max-width: 380px; margin-left: auto;
+  display: flex; align-items: center; gap: .5rem;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 0 .85rem; transition: border-color .2s var(--ease);
+}
+.tb-search:focus-within { border-color: rgba(0,180,222,.4); }
+.tb-search svg { color: var(--text-3); flex-shrink: 0; }
+.tb-search input {
+  background: none; border: none; outline: none;
+  color: var(--text); font-size: .875rem; width: 100%; padding: .55rem 0;
+}
+.tb-search input::placeholder { color: var(--text-3); }
+
+.tb-links { display: flex; gap: .25rem; }
+.tb-link {
+  color: var(--text-2); font-size: .82rem; font-weight: 500;
+  padding: .4rem .75rem; border-radius: var(--r-sm);
+  transition: color .15s, background .15s; white-space: nowrap;
+}
+.tb-link:hover { color: var(--text); background: var(--surface-2); }
+.tb-link.cta {
+  background: var(--accent); color: var(--bg);
+  font-weight: 700; padding: .4rem .9rem;
+}
+.tb-link.cta:hover { filter: brightness(1.1); }
+
+/* ─── Hero ────────────────────────────────────────────────────── */
+#hero {
+  position: relative; overflow: hidden;
+  padding: 5rem 1.5rem 4rem;
+  background: var(--bg);
+}
+.hero-mesh {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 0%, rgba(0,180,222,.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(124,58,237,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 90% 70%, rgba(248,113,113,.05) 0%, transparent 55%);
+  animation: meshPulse 8s ease-in-out infinite alternate;
+}
+@keyframes meshPulse {
+  0%   { opacity: .7; }
+  100% { opacity: 1; }
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 80%);
+}
+.hero-inner { position: relative; max-width: 1280px; margin: 0 auto; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: rgba(0,180,222,.1); border: 1px solid rgba(0,180,222,.25);
+  color: var(--accent); font-size: .72rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .3rem .8rem; border-radius: 99px; margin-bottom: 1.5rem;
+}
+.hero-badge .pulse {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 var(--accent-glow);
+  animation: pulse 2.2s ease infinite;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0,180,222,.5); }
+  70%  { box-shadow: 0 0 0 7px rgba(0,180,222,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,180,222,0); }
+}
+
+#hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800; line-height: 1.1; letter-spacing: -.02em;
+  color: var(--text); margin-bottom: 1.25rem;
+}
+#hero h1 .gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, #60a5fa 50%, var(--c-gen-ai) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#hero p {
+  color: var(--text-2); font-size: 1.05rem; line-height: 1.75;
+  max-width: 600px; margin-bottom: 2.25rem;
+}
+.hero-ctas { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .65rem 1.35rem; border-radius: var(--r-sm);
+  font-size: .875rem; font-weight: 600;
+  transition: all .18s var(--ease);
+}
+.btn-accent { background: var(--accent); color: var(--bg); }
+.btn-accent:hover { filter: brightness(1.12); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,180,222,.28); }
+.btn-outline {
+  background: var(--surface-2); color: var(--text-2);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover { border-color: rgba(255,255,255,.18); color: var(--text); }
+
+.hero-stats {
+  display: flex; gap: 0; flex-wrap: wrap;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); overflow: hidden;
+  width: fit-content;
+}
+.hstat {
+  padding: 1rem 2rem; display: flex; flex-direction: column; gap: .2rem;
+  border-right: 1px solid var(--border);
+}
+.hstat:last-child { border-right: none; }
+.hstat-value { font-size: 1.7rem; font-weight: 800; color: var(--text); letter-spacing: -.02em; }
+.hstat-label { font-size: .72rem; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ─── Content ─────────────────────────────────────────────────── */
+#content { max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+/* framework strip */
+.fw-strip {
+  display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 1rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.fw-strip-label { font-size: .82rem; color: var(--text-2); flex: 1; min-width: 200px; }
+.fw-strip-label strong { color: var(--text); }
+.fw-pills { display: flex; gap: .5rem; flex-wrap: wrap; }
+.fw-pill {
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: var(--surface-3); border: 1px solid var(--border);
+  color: var(--text-3); font-size: .72rem; font-weight: 600;
+  padding: .3rem .7rem; border-radius: 99px;
+}
+.fw-pill svg { width: 11px; height: 11px; }
+
+/* section header */
+.section-hd {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.section-hd h2 {
+  font-size: 1rem; font-weight: 700; color: var(--text);
+}
+.count-pill {
+  font-size: .72rem; font-weight: 700; color: var(--text-3);
+  background: var(--surface-2); border: 1px solid var(--border);
+  padding: .2rem .55rem; border-radius: 99px;
+}
+.section-hd-right { margin-left: auto; display: flex; align-items: center; gap: .5rem; }
+.sort-select {
+  background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text-2); font-size: .78rem; font-family: inherit;
+  padding: .35rem .65rem; border-radius: var(--r-sm); outline: none; cursor: pointer;
+  appearance: none; padding-right: 1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .5rem center;
+}
+
+/* category chips */
+.chips-row {
+  display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 2rem;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .38rem .85rem; border-radius: 99px; font-size: .78rem; font-weight: 600;
+  border: 1px solid var(--border); background: var(--surface-2);
+  color: var(--text-3); cursor: pointer;
+  transition: all .15s var(--ease);
+  white-space: nowrap; user-select: none;
+}
+.chip:hover { color: var(--text); border-color: rgba(255,255,255,.15); }
+.chip.active {
+  background: var(--accent); border-color: var(--accent);
+  color: var(--bg); box-shadow: 0 0 18px rgba(0,180,222,.22);
+}
+.chip[data-cat].active { background: var(--cat-color); border-color: var(--cat-color); box-shadow: 0 0 18px color-mix(in srgb, var(--cat-color) 35%, transparent); }
+.chip .cdot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; flex-shrink: 0;
+}
+.chip .cbadge {
+  font-size: .65rem; font-weight: 800;
+  background: rgba(255,255,255,.12);
+  padding: .05rem .35rem; border-radius: 99px;
+}
+
+/* ─── Grid ────────────────────────────────────────────────────── */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+/* ─── Cards ───────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  display: flex; flex-direction: column;
+  overflow: hidden; position: relative;
+  transition: transform .2s var(--ease), border-color .2s var(--ease), box-shadow .2s var(--ease), opacity .2s var(--ease);
+  animation: cardIn .35s var(--ease) backwards;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.13);
+  box-shadow: 0 16px 48px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.05);
+}
+.card.hidden {
+  opacity: 0; pointer-events: none;
+  animation: none;
+  position: absolute; visibility: hidden;
+}
+.card-accent {
+  height: 2px;
+  background: linear-gradient(90deg, var(--cat-color, var(--accent)) 0%, transparent 100%);
+}
+.card-inner { padding: 1.35rem 1.5rem; display: flex; flex-direction: column; gap: .9rem; flex: 1; }
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+.card-icon {
+  width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--cat-color, var(--accent)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cat-color, var(--accent)) 20%, transparent);
+}
+.card-icon svg { width: 18px; height: 18px; color: var(--cat-color, var(--accent)); }
+.card-badges { display: flex; gap: .35rem; flex-wrap: wrap; }
+.badge-new {
+  font-size: .65rem; font-weight: 800; letter-spacing: .06em;
+  background: rgba(52,211,153,.12); color: #34d399;
+  border: 1px solid rgba(52,211,153,.25);
+  padding: .15rem .45rem; border-radius: 4px; text-transform: uppercase;
+}
+.badge-template {
+  font-size: .65rem; font-weight: 800; letter-spacing: .06em;
+  background: rgba(0,180,222,.1); color: var(--accent);
+  border: 1px solid rgba(0,180,222,.2);
+  padding: .15rem .45rem; border-radius: 4px; text-transform: uppercase;
+}
+
+.card-title { font-size: .975rem; font-weight: 700; color: var(--text); line-height: 1.35; }
+.card-desc { font-size: .83rem; color: var(--text-2); line-height: 1.65; flex: 1; }
+
+.card-tags { display: flex; gap: .35rem; flex-wrap: wrap; }
+.tag {
+  display: inline-flex; align-items: center; gap: .3rem;
+  padding: .22rem .6rem; border-radius: 5px; font-size: .68rem;
+  font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+  background: color-mix(in srgb, var(--tag-color) 10%, transparent);
+  color: var(--tag-color);
+  border: 1px solid color-mix(in srgb, var(--tag-color) 22%, transparent);
+}
+
+.card-stats {
+  display: flex; align-items: center; gap: 1rem;
+  padding-top: .85rem; border-top: 1px solid var(--border-soft);
+}
+.stat-item {
+  display: flex; align-items: center; gap: .3rem;
+  font-size: .75rem; color: var(--text-3);
+}
+.stat-item svg { width: 12px; height: 12px; flex-shrink: 0; }
+.stat-item.loading span {
+  display: inline-block; width: 28px; height: 11px;
+  background: var(--surface-3); border-radius: 3px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%,100% { opacity: .4; }
+  50%      { opacity: .8; }
+}
+.stat-updated { margin-left: auto; }
+
+.card-footer {
+  padding: 0 1.5rem 1.35rem;
+  display: flex; gap: .5rem; align-items: center;
+}
+.card-btn {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .45rem 1rem; border-radius: var(--r-sm);
+  font-size: .8rem; font-weight: 600;
+  transition: all .15s var(--ease);
+}
+.card-btn-primary {
+  background: color-mix(in srgb, var(--cat-color, var(--accent)) 15%, transparent);
+  color: var(--cat-color, var(--accent));
+  border: 1px solid color-mix(in srgb, var(--cat-color, var(--accent)) 28%, transparent);
+}
+.card-btn-primary:hover {
+  background: var(--cat-color, var(--accent)); color: var(--bg);
+}
+.card-btn-ghost {
+  background: transparent; color: var(--text-3);
+  border: 1px solid var(--border);
+}
+.card-btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,.15); }
+.card-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* empty state */
+#empty {
+  display: none; text-align: center; padding: 5rem 1rem;
+  color: var(--text-3); grid-column: 1/-1;
+}
+#empty.show { display: block; }
+#empty svg { width: 48px; height: 48px; margin: 0 auto 1rem; opacity: .3; }
+#empty h3 { color: var(--text-2); font-size: 1rem; margin-bottom: .4rem; }
+
+/* ─── Footer ──────────────────────────────────────────────────── */
+footer {
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem 2rem;
+}
+.ft-inner { max-width: 1280px; margin: 0 auto; }
+.ft-grid {
+  display: grid; grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 3rem; margin-bottom: 3rem;
+}
+.ft-brand img { height: 28px; margin-bottom: .75rem; }
+.ft-brand p { font-size: .82rem; color: var(--text-3); line-height: 1.65; max-width: 220px; }
+.ft-col h4 {
+  font-size: .72rem; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: .9rem;
+}
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.ft-col a { font-size: .83rem; color: var(--text-3); transition: color .15s; }
+.ft-col a:hover { color: var(--text); }
+.ft-bottom {
+  border-top: 1px solid var(--border); padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: .5rem; flex-wrap: wrap;
+  font-size: .76rem; color: var(--text-3);
+}
+.ft-bottom a { color: var(--text-3); transition: color .15s; }
+.ft-bottom a:hover { color: var(--text); }
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ft-grid { grid-template-columns: repeat(2, 1fr); }
+  .ft-brand { grid-column: 1/-1; }
+}
+@media (max-width: 640px) {
+  .tb-search { display: none; }
+  #hero { padding: 3.5rem 1.25rem 3rem; }
+  .hero-stats { width: 100%; }
+  .hstat { padding: .85rem 1.25rem; }
+  #grid { grid-template-columns: 1fr; }
+  .tb-links .tb-link:not(.cta) { display: none; }
+  .ft-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+</style>
 </head>
-<body id="app" is="body-bind" class="loading fullbleed">
-<paper-header-panel id="main" mode="standard" main>
-<div id="mainToolbar" class="paper-header">
-<div class="site-width layout horizontal">
-<a href="/">
-<img src="/images/logo.png" class="logo-devs" alt="Codelabs Logo">
-</a>
-<div id="searchbar">
-<paper-input-container no-label-float>
-<paper-icon-button prefix icon="search"></paper-icon-button>
-<label>Search</label>
-<input is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown">
-</paper-input-container>
-</div>
-</div>
-</div>
-<header id="banner" down$="[[_toBoolean(selectedFilter)]]">
-<div class="site-width">
-<h2 class="banner-title">Welcome to Dynatrace Sales Engineering Codelabs!</h2>
-<div class="banner-description" data-filter-selected$="[[_toBoolean(selectedFilter)]]">
-<p class="banner-info">
-The Dynatrace Sales Engineering CodeLabs provide a guided, tutorial-based hands-on learning experience. These labs will provide sessions that are presented by the Dynatrace Sales Engineering team during Technical Workshops but are also feasible for self-learning. Please reach out to sales-engineering@dynatrace.com if you have other questions.
-<br>
-</p>
-</div>
-</div>
+<body>
+
+<!-- ── Topbar ─────────────────────────────────────────────────── -->
+<header id="topbar">
+  <div class="tb-inner">
+    <a class="tb-logo" href="/">
+      <img src="/images/logo.png" alt="Dynatrace">
+      <span class="tb-wordmark">WWSE <span>Enablements</span></span>
+    </a>
+    <div class="tb-search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="search-input" type="search" placeholder="Search enablements, categories…" autocomplete="off" spellcheck="false">
+    </div>
+    <nav class="tb-links">
+      <a class="tb-link" href="https://dynatrace-wwse.github.io/codespaces-framework/" target="_blank" rel="noopener">Framework</a>
+      <a class="tb-link" href="https://github.com/dynatrace-wwse" target="_blank" rel="noopener">GitHub</a>
+      <a class="tb-link cta" href="https://github.com/dynatrace-wwse/enablement-codespaces-template" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Get Started
+      </a>
+    </nav>
+  </div>
 </header>
-<main>
-<div id="filters" class="site-width layout horizontal center justified">
-<div id="sortby">
-<paper-tabs selected="0" noink on-iron-activate="sortBy">
-<paper-tab>A-Z</paper-tab>
-<paper-tab>Recent</paper-tab>
-<paper-tab>Duration</paper-tab>
-</paper-tabs>
-</div><paper-dropdown-menu label="Filter by category" class="dropdown-filter" no-label-float noink no-animations>
-<paper-listbox id="categorylist" slot="dropdown-content" class="dropdown-content" on-iron-activate="onCategoryActivate" attr-for-selected="filter">
-<paper-item filter="bizops">bizops</paper-item>
-<paper-item filter="easytravel">easytravel</paper-item>
-<paper-item filter="keptn">keptn</paper-item>
-<paper-item filter="kubernetes">kubernetes</paper-item>
-<paper-item filter="onboarding">onboarding</paper-item>
-</paper-listbox>
-</paper-dropdown-menu></div>
-<card-sorter id="cards" class="site-width">
-<a href="/codelabs/bizops-easytravel/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-bizops" data-category="bizops" data-title="BizOps with Easytravel" data-duration="136" data-updated="2021-03-09T19:01:20+01:00" data-tags="bizops" data-pin="">
-<div class="description">BizOps with Easytravel</div>
-<div class="card-duration">
-<span>136 min </span>
-<span>Updated Mar 9, 2021</span>
-</div>
-<div class="card-footer">
-<div class="category-icon bizops-icon"></div>
-<paper-button class="bizops-bg">Start</paper-button>
-</div>
-</a>
-<a href="/codelabs/deploy-easytravel-at-localhost/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-easytravel" data-category="easytravel,dem,localhost" data-title="Deploying Easytravel @ 127.0.0.1" data-duration="23" data-updated="2021-03-09T18:40:34+01:00" data-tags="dem,easytravel,localhost" data-pin="">
-<div class="description">Deploying Easytravel @ 127.0.0.1</div>
-<div class="card-duration">
-<span>23 min </span>
-<span>Updated Mar 9, 2021</span>
-</div>
-<div class="card-footer">
-<div class="category-icon easytravel-icon"></div>
-<paper-button class="easytravel-bg">Start</paper-button>
-</div>
-</a>
-<a href="/codelabs/why-devs-love-dynatrace/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-keptn" data-category="keptn,codelevel,cicd" data-title="Why Devs Love Dynatrace" data-duration="10" data-updated="2021-03-09T19:03:27+01:00" data-tags="codelevel,devlove" data-pin="">
-<div class="description">Why Devs Love Dynatrace</div>
-<div class="card-duration">
-<span>10 min </span>
-<span>Updated Mar 9, 2021</span>
-</div>
-<div class="card-footer">
-<div class="category-icon keptn-icon"></div>
-<paper-button class="keptn-bg">Start</paper-button>
-</div>
-</a>
-<a href="/codelabs/kubernetes-deepdive/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-kubernetes" data-category="kubernetes" data-title="Kubernetes Deepdive" data-duration="5" data-updated="2021-03-09T19:09:55+01:00" data-tags="kubernetes" data-pin="">
-<div class="description">Kubernetes Deepdive</div>
-<div class="card-duration">
-<span>5 min </span>
-<span>Updated Mar 9, 2021</span>
-</div>
-<div class="card-footer">
-<div class="category-icon kubernetes-icon"></div>
-<paper-button class="kubernetes-bg">Start</paper-button>
-</div>
-</a>
-<a href="/codelabs/troubleshooting-dynatrace-oa-operator/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-kubernetes" data-category="kubernetes,installation" data-title="Troubleshooting Dynatrace OneAgent Operator" data-duration="0" data-updated="2021-03-09T19:11:11+01:00" data-tags="installation,kubernetes" data-pin="">
-<div class="description">Troubleshooting Dynatrace OneAgent Operator</div>
-<div class="card-duration">
-<span></span>
-<span>Updated Mar 9, 2021</span>
-</div>
-<div class="card-footer">
-<div class="category-icon kubernetes-icon"></div>
-<paper-button class="kubernetes-bg">Start</paper-button>
-</div>
-</a>
-<a href="/codelabs/dem-101/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-onboarding" data-category="onboarding" data-title="DEM 101" data-duration="10" data-updated="2021-03-09T19:02:50+01:00" data-tags="dem,onboarding" data-pin="">
-<div class="description">DEM 101</div>
-<div class="card-duration">
-<span>10 min </span>
-<span>Updated Mar 9, 2021</span>
-</div>
-<div class="card-footer">
-<div class="category-icon onboarding-icon"></div>
-<paper-button class="onboarding-bg">Start</paper-button>
-</div>
-</a>
-</card-sorter>
-<div id="loading-placeholder" class="site-width">
-Loading Codelabs, please wait...
-</div>
+
+<!-- ── Hero ──────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      Worldwide Sales Engineering
+    </div>
+    <h1>The <span class="gradient">Enablement Hub</span><br>for Dynatrace SE</h1>
+    <p>Hands-on workshops and guided trainings built on the <strong style="color:var(--text)">Codespaces Framework</strong> — one-click launch on GitHub Codespaces, devcontainers, any cloud, or locally on AMD &amp; ARM. Built-in docs, monitoring, and observability included.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-accent" href="https://dynatrace-wwse.github.io/codespaces-framework/" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Read the Docs
+      </a>
+      <a class="btn btn-outline" href="https://github.com/dynatrace-wwse" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        Browse GitHub
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-value" id="stat-total">11</span>
+        <span class="hstat-label">Enablements</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-value">9</span>
+        <span class="hstat-label">Categories</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-value">∞</span>
+        <span class="hstat-label">Runs anywhere</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-value" id="stat-stars">—</span>
+        <span class="hstat-label">Total Stars</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Main ───────────────────────────────────────────────────── -->
+<main id="content">
+
+  <!-- framework strip -->
+  <div class="fw-strip">
+    <p class="fw-strip-label">
+      Powered by the <strong>Codespaces Framework</strong> — all enablements share a common platform with built-in documentation, monitoring, one-click launch, and structured learning paths.
+    </p>
+    <div class="fw-pills">
+      <span class="fw-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Codespaces
+      </span>
+      <span class="fw-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        DevContainers
+      </span>
+      <span class="fw-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        MkDocs
+      </span>
+      <span class="fw-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        AMD &amp; ARM
+      </span>
+      <span class="fw-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Observability
+      </span>
+    </div>
+  </div>
+
+  <!-- section header -->
+  <div class="section-hd">
+    <h2>All Enablements</h2>
+    <span class="count-pill" id="count-label">11 shown</span>
+    <div class="section-hd-right">
+      <select class="sort-select" id="sort-select" aria-label="Sort by">
+        <option value="default">Sort: Default</option>
+        <option value="stars">Sort: Stars</option>
+        <option value="updated">Sort: Recently Updated</option>
+        <option value="alpha">Sort: A–Z</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- category chips -->
+  <div class="chips-row" role="group" aria-label="Filter by category" id="chips-row">
+    <button class="chip active" data-filter="all">All <span class="cbadge" id="badge-all">11</span></button>
+    <button class="chip" data-filter="kubernetes"             data-cat="kubernetes"             style="--cat-color:var(--c-kubernetes)"><span class="cdot"></span>Kubernetes             <span class="cbadge" id="badge-kubernetes">1</span></button>
+    <button class="chip" data-filter="opentelemetry"          data-cat="opentelemetry"          style="--cat-color:var(--c-opentelemetry)"><span class="cdot"></span>OpenTelemetry          <span class="cbadge" id="badge-opentelemetry">1</span></button>
+    <button class="chip" data-filter="rum"                    data-cat="rum"                    style="--cat-color:var(--c-rum)"><span class="cdot"></span>RUM                    <span class="cbadge" id="badge-rum">1</span></button>
+    <button class="chip" data-filter="logs"                   data-cat="logs"                   style="--cat-color:var(--c-logs)"><span class="cdot"></span>Logs                   <span class="cbadge" id="badge-logs">3</span></button>
+    <button class="chip" data-filter="business-observability" data-cat="business-observability" style="--cat-color:var(--c-business-observability)"><span class="cdot"></span>Business Observability <span class="cbadge" id="badge-business-observability">3</span></button>
+    <button class="chip" data-filter="live-debugger"          data-cat="live-debugger"          style="--cat-color:var(--c-live-debugger)"><span class="cdot"></span>Live Debugger          <span class="cbadge" id="badge-live-debugger">2</span></button>
+    <button class="chip" data-filter="workflows"              data-cat="workflows"              style="--cat-color:var(--c-workflows)"><span class="cdot"></span>Workflows              <span class="cbadge" id="badge-workflows">1</span></button>
+    <button class="chip" data-filter="gen-ai"                 data-cat="gen-ai"                 style="--cat-color:var(--c-gen-ai)"><span class="cdot"></span>Gen AI                 <span class="cbadge" id="badge-gen-ai">1</span></button>
+    <button class="chip" data-filter="devops"                 data-cat="devops"                 style="--cat-color:var(--c-devops)"><span class="cdot"></span>DevOps                 <span class="cbadge" id="badge-devops">3</span></button>
+  </div>
+
+  <!-- grid (rendered by JS) -->
+  <div id="grid" role="list">
+    <div id="empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <h3>No enablements match</h3>
+      <p>Try a different filter or search term.</p>
+    </div>
+  </div>
 </main>
-<footer id="footer">
-<div class="footer-wrapper site-width">
-<div class="link-list">
-<label>Dynatrace Community</label>
-<ul>
-<li><a href="https://help.dynatrace.com/">Documentation</a></li>
-<li><a href="https://university.dynatrace.com/">University</a></li>
-<li><a href="https://answers.dynatrace.com/">Forums</a></li>
-<li><a href="https://www.youtube.com/c/dynatrace">Youtube</a></li>
-</ul>
-</div>
-<div class="link-list">
-<label>Dynatrace Sales Engineering</label>
-<ul>
-<li><a href="https://github.com/Dynatrace">Github</a></li>
-<li><a href="https://bitbucket.lab.dynatrace.org/projects/GSSE">Bitbucket GSSE</a></li>
-<li><a href="https://www.dynatrace.com/news/?region=apac&post_type=event">Events</a></li>
-<li><a href="https://dynatrace.sharepoint.com/sites/SE/SitePages/Global.aspx">Sharepoint</a></li>
-</ul>
-</div>
-<div class="link-list">
-<label>Learn More</label>
-<ul>
-<li><a href="https://www.dynatrace.com/">Dynatrace</a></li>
-<li><a href="https://www.keptn.sh/">Keptn.sh</a></li>
-</ul>
-</div>
-</div>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <img src="/images/logo.png" alt="Dynatrace">
+        <p>Hands-on enablements and workshops by the Dynatrace Worldwide Sales Engineering team.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="https://docs.dynatrace.com/" target="_blank" rel="noopener">Documentation</a></li>
+          <li><a href="https://university.dynatrace.com/" target="_blank" rel="noopener">University</a></li>
+          <li><a href="https://community.dynatrace.com/" target="_blank" rel="noopener">Community</a></li>
+          <li><a href="https://www.youtube.com/c/dynatrace" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Engineering</h4>
+        <ul>
+          <li><a href="https://github.com/dynatrace-wwse" target="_blank" rel="noopener">GitHub Org</a></li>
+          <li><a href="https://dynatrace-wwse.github.io/codespaces-framework/" target="_blank" rel="noopener">Codespaces Framework</a></li>
+          <li><a href="https://dynatrace-wwse.github.io/codespaces-framework/enablements/" target="_blank" rel="noopener">All Enablements</a></li>
+          <li><a href="mailto:sales-engineering@dynatrace.com">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Learn More</h4>
+        <ul>
+          <li><a href="https://www.dynatrace.com/" target="_blank" rel="noopener">Dynatrace.com</a></li>
+          <li><a href="https://opentelemetry.io/" target="_blank" rel="noopener">OpenTelemetry</a></li>
+          <li><a href="https://kubernetes.io/" target="_blank" rel="noopener">Kubernetes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2025 Dynatrace LLC · Worldwide Sales Engineering</span>
+      <span>
+        <a href="https://www.dynatrace.com/company/trust-center/terms-of-use/" target="_blank" rel="noopener">Terms</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.dynatrace.com/support/help/how-to-use-dynatrace/data-privacy-and-security/data-privacy/" target="_blank" rel="noopener">Privacy</a>
+      </span>
+    </div>
+  </div>
 </footer>
-<div class="footerbar">
-<hr>
-<div class="site-width layout horizontal center justified">
-<span>
-<a href="https://www.dynatrace.com/company/trust-center/terms-of-use/">Terms</a>
-&nbsp; | &nbsp;
-<a href="https://www.dynatrace.com/support/help/how-to-use-dynatrace/data-privacy-and-security/data-privacy/">Privacy</a>
-</span>
-</div>
-</div>
-</paper-header-panel>
-<script src="/scripts/main.js"></script>
+
+<!-- ── Data + Logic ────────────────────────────────────────────── -->
+<script>
+// ── SVG icons per category ───────────────────────────────────────
+const ICONS = {
+  kubernetes: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`,
+  opentelemetry: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>`,
+  rum: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  logs: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+  'business-observability': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+  'live-debugger': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 9l3-3 3 3"/><path d="M9 15l3 3 3-3"/><path d="M20 12H4"/></svg>`,
+  workflows: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+  'gen-ai': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+  devops: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  default: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>`,
+};
+
+// ── Repo definitions ─────────────────────────────────────────────
+const REPOS = [
+  {
+    repo: 'enablement-kubernetes-opentelemetry',
+    title: 'Kubernetes & OpenTelemetry',
+    desc: 'Full-stack Kubernetes observability with OpenTelemetry. Instrument cloud-native workloads, collect distributed traces, metrics, and logs, and correlate with Dynatrace topology.',
+    tags: ['kubernetes','opentelemetry'],
+    primaryTag: 'kubernetes',
+  },
+  {
+    repo: 'enablement-gen-ai-llm-observability',
+    title: 'GenAI & LLM Observability',
+    desc: 'Observe GenAI and LLM workloads end-to-end. Trace AI pipelines, monitor token usage and latency, and detect anomalies in AI-driven applications with Dynatrace.',
+    tags: ['gen-ai'],
+    primaryTag: 'gen-ai',
+  },
+  {
+    repo: 'enablement-business-observability',
+    title: 'Business Observability',
+    desc: 'Leverage Dynatrace BizEvents and dashboards to connect technical performance with real business outcomes. KPI tracking, funnel analysis, and custom business metrics.',
+    tags: ['business-observability'],
+    primaryTag: 'business-observability',
+  },
+  {
+    repo: 'enablement-dql-301',
+    title: 'Advanced DQL 301',
+    desc: 'Master the Dynatrace Query Language at an advanced level. Build powerful cross-signal queries spanning logs, traces, metrics and business events.',
+    tags: ['logs','business-observability'],
+    primaryTag: 'logs',
+  },
+  {
+    repo: 'enablement-dynatrace-log-ingest-101',
+    title: 'Log Ingestion 101',
+    desc: 'Introduction to log ingestion and analytics. Learn how to ingest, parse, and analyse logs at scale using OpenPipeline and Dynatrace DQL.',
+    tags: ['logs'],
+    primaryTag: 'logs',
+  },
+  {
+    repo: 'enablement-browser-dem-biz-observability',
+    title: 'Browser DEM & Business Observability',
+    desc: 'Browser Digital Experience Monitoring combined with business observability. Correlate real-user sessions with business KPIs in a single unified view.',
+    tags: ['rum','business-observability'],
+    primaryTag: 'rum',
+  },
+  {
+    repo: 'enablement-live-debugger-bug-hunting',
+    title: 'Live Debugger & Bug Hunting',
+    desc: 'Diagnose production issues in real-world scenarios using Dynatrace Live Debugger — no redeploys, no restarts. Step through running code with full observability context.',
+    tags: ['live-debugger','devops'],
+    primaryTag: 'live-debugger',
+  },
+  {
+    repo: 'enablement-workflow-essentials',
+    title: 'Workflow Essentials',
+    desc: 'Build automated remediation, alerting, and integration workflows using the Dynatrace Workflow engine. From simple notifications to complex multi-step automations.',
+    tags: ['workflows'],
+    primaryTag: 'workflows',
+  },
+  {
+    repo: 'workshop-dynatrace-log-analytics',
+    title: 'Log Analytics Workshop',
+    desc: 'Workshop-format hands-on lab for log analytics. From ingestion to root-cause analysis — master the full log management lifecycle with Dynatrace.',
+    tags: ['logs'],
+    primaryTag: 'logs',
+  },
+  {
+    repo: 'bug-busters',
+    title: 'Bug Busters',
+    desc: 'Gamified bug hunting and troubleshooting challenges. Race against the clock to find and fix production issues across a realistic microservices environment.',
+    tags: ['live-debugger','devops'],
+    primaryTag: 'live-debugger',
+  },
+  {
+    repo: 'enablement-codespaces-template',
+    title: 'Codespaces Enablement Template',
+    desc: 'The canonical template to kickstart your own enablement. All Codespaces Framework features pre-configured: docs, monitoring, devcontainer, and CI/CD out of the box.',
+    tags: ['devops'],
+    primaryTag: 'devops',
+    isTemplate: true,
+  },
+];
+
+// ── Category CSS var map ─────────────────────────────────────────
+const CAT_VAR = {
+  'kubernetes':             'var(--c-kubernetes)',
+  'opentelemetry':          'var(--c-opentelemetry)',
+  'rum':                    'var(--c-rum)',
+  'logs':                   'var(--c-logs)',
+  'business-observability': 'var(--c-business-observability)',
+  'live-debugger':          'var(--c-live-debugger)',
+  'workflows':              'var(--c-workflows)',
+  'gen-ai':                 'var(--c-gen-ai)',
+  'devops':                 'var(--c-devops)',
+};
+
+const GH_ORG = 'dynatrace-wwse';
+const GH_BASE = `https://github.com/${GH_ORG}`;
+const DOCS_BASE = `https://dynatrace-wwse.github.io`;
+
+// ── State ────────────────────────────────────────────────────────
+let activeFilter = 'all';
+let searchQuery = '';
+let sortBy = 'default';
+let githubData = {};   // repo → {stars, forks, updatedAt}
+let searchTimer = null;
+
+// ── Helpers ──────────────────────────────────────────────────────
+function relTime(iso) {
+  const sec = (Date.now() - new Date(iso)) / 1000;
+  if (sec < 3600)   return `${Math.floor(sec/60)}m ago`;
+  if (sec < 86400)  return `${Math.floor(sec/3600)}h ago`;
+  if (sec < 604800) return `${Math.floor(sec/86400)}d ago`;
+  if (sec < 2592000)return `${Math.floor(sec/604800)}w ago`;
+  return new Date(iso).toLocaleDateString('en-US',{month:'short',year:'numeric'});
+}
+function isNew(iso) {
+  if (!iso) return false;
+  return (Date.now() - new Date(iso)) < 30 * 24 * 3600 * 1000;
+}
+function fmt(n) {
+  if (n === undefined) return '—';
+  if (n >= 1000) return (n/1000).toFixed(1)+'k';
+  return String(n);
+}
+
+// ── Render ───────────────────────────────────────────────────────
+function renderCard(r, delay) {
+  const gh = githubData[r.repo] || {};
+  const catColor = CAT_VAR[r.primaryTag] || 'var(--accent)';
+  const icon = ICONS[r.primaryTag] || ICONS.default;
+  const ghUrl = `${GH_BASE}/${r.repo}`;
+  const docsUrl = `${DOCS_BASE}/${r.repo}/`;
+  const stars = gh.stars;
+  const forks = gh.forks;
+  const updatedAt = gh.updatedAt;
+  const fresh = isNew(updatedAt);
+
+  const tagsHtml = r.tags.map(t =>
+    `<span class="tag" style="--tag-color:${CAT_VAR[t] || 'var(--accent)'}">${t.replace(/-/g,' ')}</span>`
+  ).join('');
+
+  const badgesHtml = [
+    r.isTemplate ? `<span class="badge-template">Template</span>` : '',
+    fresh        ? `<span class="badge-new">New</span>` : '',
+  ].filter(Boolean).join('');
+
+  const statsHtml = `
+    <div class="card-stats">
+      <span class="stat-item ${stars===undefined?'loading':''}">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span>${fmt(stars)}</span>
+      </span>
+      <span class="stat-item ${forks===undefined?'loading':''}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h3"/><line x1="6" y1="9" x2="6" y2="15"/></svg>
+        <span>${fmt(forks)}</span>
+      </span>
+      ${updatedAt ? `
+      <span class="stat-item stat-updated">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>${relTime(updatedAt)}</span>
+      </span>` : `<span class="stat-item loading stat-updated"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg><span></span></span>`}
+    </div>`;
+
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.setAttribute('role','listitem');
+  el.dataset.tags = r.tags.join(' ');
+  el.dataset.title = r.title.toLowerCase();
+  el.dataset.repo = r.repo;
+  el.dataset.stars = stars ?? 0;
+  el.dataset.updated = updatedAt ?? '';
+  el.style.cssText = `--cat-color:${catColor}; animation-delay:${delay}ms`;
+  el.innerHTML = `
+    <div class="card-accent"></div>
+    <div class="card-inner">
+      <div class="card-head">
+        <div class="card-icon">${icon}</div>
+        <div class="card-badges">${badgesHtml}</div>
+      </div>
+      <div>
+        <h3 class="card-title">${r.title}</h3>
+      </div>
+      <p class="card-desc">${r.desc}</p>
+      <div class="card-tags">${tagsHtml}</div>
+      ${statsHtml}
+    </div>
+    <div class="card-footer">
+      <a class="card-btn card-btn-primary" href="${ghUrl}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        Open
+      </a>
+      <a class="card-btn card-btn-ghost" href="${docsUrl}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Docs
+      </a>
+    </div>`;
+  return el;
+}
+
+function sortedRepos() {
+  const arr = [...REPOS];
+  if (sortBy === 'stars')   arr.sort((a,b) => (githubData[b.repo]?.stars||0) - (githubData[a.repo]?.stars||0));
+  if (sortBy === 'updated') arr.sort((a,b) => (githubData[b.repo]?.updatedAt||'') > (githubData[a.repo]?.updatedAt||'') ? 1 : -1);
+  if (sortBy === 'alpha')   arr.sort((a,b) => a.title.localeCompare(b.title));
+  return arr;
+}
+
+function rebuildGrid() {
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  // remove existing cards
+  Array.from(grid.querySelectorAll('.card')).forEach(c => c.remove());
+
+  const repos = sortedRepos();
+  let shown = 0;
+  repos.forEach((r, i) => {
+    const tagMatch = activeFilter === 'all' || r.tags.includes(activeFilter);
+    const q = searchQuery;
+    const textMatch = !q || r.title.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q) || r.tags.some(t => t.includes(q)) || r.repo.includes(q);
+    if (!tagMatch || !textMatch) return;
+    const card = renderCard(r, shown * 40);
+    grid.appendChild(card);
+    shown++;
+  });
+
+  document.getElementById('count-label').textContent = `${shown} shown`;
+  empty.classList.toggle('show', shown === 0);
+}
+
+// ── Filter / Search ──────────────────────────────────────────────
+document.getElementById('chips-row').addEventListener('click', e => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  activeFilter = chip.dataset.filter;
+  rebuildGrid();
+});
+
+document.getElementById('search-input').addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    rebuildGrid();
+  }, 220);
+});
+
+document.getElementById('sort-select').addEventListener('change', e => {
+  sortBy = e.target.value;
+  rebuildGrid();
+});
+
+// ── Initial render ───────────────────────────────────────────────
+rebuildGrid();
+
+// ── GitHub API ───────────────────────────────────────────────────
+async function fetchGithubStats() {
+  const repoNames = REPOS.map(r => r.repo);
+  let totalStars = 0;
+
+  await Promise.allSettled(repoNames.map(async name => {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${GH_ORG}/${name}`, {
+        headers: { 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (!res.ok) return;
+      const d = await res.json();
+      githubData[name] = {
+        stars: d.stargazers_count,
+        forks: d.forks_count,
+        updatedAt: d.pushed_at,
+      };
+      totalStars += d.stargazers_count;
+    } catch(_) {}
+  }));
+
+  // update hero stars counter
+  if (totalStars > 0) {
+    document.getElementById('stat-stars').textContent = fmt(totalStars);
+  }
+
+  // patch existing cards in place (no full re-render)
+  document.querySelectorAll('.card').forEach(card => {
+    const r = REPOS.find(x => x.repo === card.dataset.repo);
+    if (!r) return;
+    const gh = githubData[r.repo];
+    if (!gh) return;
+
+    card.dataset.stars = gh.stars;
+    card.dataset.updated = gh.updatedAt || '';
+
+    // update stat items
+    const items = card.querySelectorAll('.stat-item');
+    items[0].classList.remove('loading');
+    items[0].querySelector('span').textContent = fmt(gh.stars);
+    items[1].classList.remove('loading');
+    items[1].querySelector('span').textContent = fmt(gh.forks);
+    items[2].classList.remove('loading');
+    items[2].querySelector('span').textContent = relTime(gh.updatedAt);
+
+    // add "new" badge if recently updated and not already present
+    if (isNew(gh.updatedAt) && !card.querySelector('.badge-new')) {
+      const badges = card.querySelector('.card-badges');
+      const b = document.createElement('span');
+      b.className = 'badge-new'; b.textContent = 'New';
+      badges.prepend(b);
+    }
+  });
+}
+
+fetchGithubStats();
+</script>
 </body>
 </html>
