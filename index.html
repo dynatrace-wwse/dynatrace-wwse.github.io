@@ -13,6 +13,7 @@
 <meta property="og:title" content="WWSE Enablement Hub · Dynatrace">
 <meta property="og:description" content="Hands-on enablements and workshops by the Dynatrace Worldwide Sales Engineering team.">
 <meta property="og:url" content="https://dynatrace-wwse.github.io/">
+<script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/e6d3d89f79f14be8_complete.js" crossorigin="anonymous"></script>
 <style>
 /* ─── Tokens ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -143,7 +144,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 80%);
 }
-.hero-inner { position: relative; max-width: 1280px; margin: 0 auto; }
+.hero-inner { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; }
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: .45rem;
@@ -198,6 +199,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--r); overflow: hidden;
   width: fit-content;
+}
+#particles-js {
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 .hstat {
   padding: 1rem 2rem; display: flex; flex-direction: column; gap: .2rem;
@@ -497,6 +503,7 @@ footer {
 <section id="hero">
   <div class="hero-mesh"></div>
   <div class="hero-grid-lines"></div>
+  <div id="particles-js"></div>
   <div class="hero-inner">
     <div class="hero-badge">
       <span class="pulse"></span>
@@ -1020,6 +1027,26 @@ async function fetchGithubStats() {
 }
 
 fetchGithubStats();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS('particles-js', {
+  "particles": {
+    "number": { "value": 60, "density": { "enable": true, "value_area": 600 } },
+    "color": { "value": "#00b4de" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.45, "random": true },
+    "size": { "value": 3, "random": true },
+    "line_linked": { "enable": true, "distance": 130, "color": "#00b4de", "opacity": 0.25, "width": 1 },
+    "move": { "enable": true, "speed": 2.5, "direction": "none", "random": true, "out_mode": "out" }
+  },
+  "interactivity": {
+    "detect_on": "window",
+    "events": { "onhover": { "enable": true, "mode": "repulse" }, "resize": true },
+    "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
+  },
+  "retina_detect": true
+});
 </script>
 </body>
 </html>
