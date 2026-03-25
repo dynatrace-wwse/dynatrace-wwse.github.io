@@ -838,6 +838,8 @@ let activeFilter = 'all';
 let searchQuery = '';
 let sortBy = 'default';
 let githubData = {};   // repo → {stars, forks, updatedAt}
+// pre-load cache so renderCard can access it synchronously
+try { const c = localStorage.getItem('wwse_gh_v1'); if (c) { const p = JSON.parse(c); if (Date.now() - p.ts < 30*60*1000) githubData = p.data; } } catch(_) {}
 let searchTimer = null;
 
 // ── Helpers ──────────────────────────────────────────────────────
@@ -1014,43 +1016,33 @@ document.getElementById('sort-select').addEventListener('change', e => {
 // ── Initial render ───────────────────────────────────────────────
 rebuildGrid();
 
-// ── GitHub API ───────────────────────────────────────────────────
-async function fetchGithubStats() {
-  const repoNames = REPOS.map(r => r.repo);
+// ── Cache helpers ────────────────────────────────────────────────
+const CACHE_TTL = 30 * 60 * 1000; // 30 min
+const GH_CACHE_KEY     = 'wwse_gh_v1';
+const DOCKER_CACHE_KEY = 'wwse_docker_v1';
+
+function cacheLoad(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const { ts, data } = JSON.parse(raw);
+    return (Date.now() - ts < CACHE_TTL) ? data : null;
+  } catch(_) { return null; }
+}
+function cacheSave(key, data) {
+  try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), data })); } catch(_) {}
+}
+
+// ── Apply GitHub data to DOM ─────────────────────────────────────
+function applyGithubData() {
   let totalStars = 0;
-
-  await Promise.allSettled(repoNames.map(async name => {
-    try {
-      const res = await fetch(`https://api.github.com/repos/${GH_ORG}/${name}`, {
-        headers: { 'Accept': 'application/vnd.github.v3+json' }
-      });
-      if (!res.ok) return;
-      const d = await res.json();
-      githubData[name] = {
-        stars: d.stargazers_count,
-        forks: d.forks_count,
-        updatedAt: d.pushed_at,
-      };
-      totalStars += d.stargazers_count;
-    } catch(_) {}
-  }));
-
-  // update hero stars counter
-  if (totalStars > 0) {
-    document.getElementById('stat-stars').textContent = fmt(totalStars);
-  }
-
-  // patch existing cards in place (no full re-render)
   document.querySelectorAll('.card').forEach(card => {
     const r = REPOS.find(x => x.repo === card.dataset.repo);
     if (!r) return;
     const gh = githubData[r.repo];
     if (!gh) return;
-
-    card.dataset.stars = gh.stars;
+    card.dataset.stars   = gh.stars;
     card.dataset.updated = gh.updatedAt || '';
-
-    // update stat items
     const items = card.querySelectorAll('.stat-item');
     items[0].classList.remove('loading');
     items[0].querySelector('span').textContent = fmt(gh.stars);
@@ -1058,27 +1050,59 @@ async function fetchGithubStats() {
     items[1].querySelector('span').textContent = fmt(gh.forks);
     items[2].classList.remove('loading');
     items[2].querySelector('span').textContent = relTime(gh.updatedAt);
-
-    // add "new" badge if recently updated and not already present
     if (isNew(gh.updatedAt) && !card.querySelector('.badge-new')) {
-      const badges = card.querySelector('.card-badges');
       const b = document.createElement('span');
       b.className = 'badge-new'; b.textContent = 'New';
-      badges.prepend(b);
+      card.querySelector('.card-badges').prepend(b);
     }
+    totalStars += gh.stars || 0;
   });
+  if (totalStars > 0) document.getElementById('stat-stars').textContent = fmt(totalStars);
+}
+
+// ── GitHub API ───────────────────────────────────────────────────
+async function fetchGithubStats(force = false) {
+  // use cache if fresh
+  if (!force) {
+    const cached = cacheLoad(GH_CACHE_KEY);
+    if (cached) {
+      githubData = cached;
+      applyGithubData();
+      return;
+    }
+  }
+
+  await Promise.allSettled(REPOS.map(async r => {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${GH_ORG}/${r.repo}`, {
+        headers: { 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (!res.ok) return;
+      const d = await res.json();
+      githubData[r.repo] = { stars: d.stargazers_count, forks: d.forks_count, updatedAt: d.pushed_at };
+    } catch(_) {}
+  }));
+
+  cacheSave(GH_CACHE_KEY, githubData);
+  applyGithubData();
 }
 
 fetchGithubStats();
 
+// ── Docker Hub API ───────────────────────────────────────────────
 async function fetchDockerStats() {
+  const cached = cacheLoad(DOCKER_CACHE_KEY);
+  if (cached !== null) {
+    document.getElementById('stat-pulls').textContent = fmt(cached);
+    return;
+  }
   try {
     const res = await fetch('https://hub.docker.com/v2/repositories/shinojosa/dt-enablement');
     if (!res.ok) return;
     const d = await res.json();
-    const pulls = d.pull_count;
-    if (pulls !== undefined) {
-      document.getElementById('stat-pulls').textContent = fmt(pulls);
+    if (d.pull_count !== undefined) {
+      document.getElementById('stat-pulls').textContent = fmt(d.pull_count);
+      cacheSave(DOCKER_CACHE_KEY, d.pull_count);
     }
   } catch(_) {}
 }
