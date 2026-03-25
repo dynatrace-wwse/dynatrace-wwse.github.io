@@ -314,7 +314,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ─── Cards ───────────────────────────────────────────────────── */
 .card {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(0,180,222,.25);
   border-radius: var(--r);
   display: flex; flex-direction: column;
   overflow: hidden; position: relative;
@@ -327,8 +327,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .card:hover {
   transform: translateY(-3px);
-  border-color: rgba(255,255,255,.26);
-  box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.12);
+  border-color: rgba(0,180,222,.55);
+  box-shadow: 0 16px 48px rgba(0,0,0,.5), 0 0 0 1px rgba(0,180,222,.2);
 }
 .card.hidden {
   opacity: 0; pointer-events: none;
@@ -337,7 +337,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .card-accent {
   height: 2px;
-  background: linear-gradient(90deg, var(--cat-color, var(--accent)) 0%, transparent 100%);
+  background: linear-gradient(90deg, rgba(0,180,222,.6) 0%, transparent 100%);
 }
 .card-inner { padding: 1.35rem 1.5rem; display: flex; flex-direction: column; gap: .9rem; flex: 1; }
 .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
