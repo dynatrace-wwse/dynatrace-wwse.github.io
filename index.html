@@ -396,9 +396,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .stat-item {
   display: flex; align-items: center; gap: .3rem;
-  font-size: .75rem; color: var(--text-3);
+  font-size: .75rem; color: #5dd8f0;
 }
-.stat-item svg { width: 12px; height: 12px; flex-shrink: 0; }
+.stat-item svg { width: 12px; height: 12px; flex-shrink: 0; color: #5dd8f0; }
 .stat-item.loading span {
   display: inline-block; width: 28px; height: 11px;
   background: var(--surface-3); border-radius: 3px;
@@ -531,7 +531,7 @@ footer {
         <span class="hstat-label">Enablements</span>
       </div>
       <div class="hstat">
-        <span class="hstat-value">10</span>
+        <span class="hstat-value" id="stat-categories">—</span>
         <span class="hstat-label">Categories</span>
       </div>
       <div class="hstat">
@@ -871,6 +871,9 @@ function updateBadgeCounts() {
   allBtn.innerHTML = `All <span class="cbadge">${REPOS.length}</span>`;
   row.appendChild(allBtn);
 
+  // Update categories count in hero
+  document.getElementById('stat-categories').textContent = Object.keys(cats).length;
+
   // Sort categories by count descending
   const sorted = Object.entries(cats).sort((a, b) => b[1] - a[1]);
 
@@ -1022,20 +1025,34 @@ async function fetchGithubStats(force = false) {
 
 // ── Docker Hub API ───────────────────────────────────────────────
 async function fetchDockerStats() {
+  const el = document.getElementById('stat-pulls');
   const cached = cacheLoad(DOCKER_CACHE_KEY);
   if (cached !== null) {
-    document.getElementById('stat-pulls').textContent = fmt(cached);
+    el.textContent = fmt(cached);
     return;
   }
   try {
-    const res = await fetch('https://hub.docker.com/v2/repositories/shinojosa/dt-enablement');
-    if (!res.ok) return;
+    // Try Docker Hub v2 API (public repos, CORS may vary)
+    const res = await fetch('https://hub.docker.com/v2/repositories/shinojosa/dt-enablement/', {
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error(res.status);
     const d = await res.json();
     if (d.pull_count !== undefined) {
-      document.getElementById('stat-pulls').textContent = fmt(d.pull_count);
+      el.textContent = fmt(d.pull_count);
       cacheSave(DOCKER_CACHE_KEY, d.pull_count);
     }
-  } catch(_) {}
+  } catch(_) {
+    // Fallback: use GitHub badge redirect to parse pulls
+    try {
+      const res = await fetch('https://img.shields.io/docker/pulls/shinojosa/dt-enablement.json');
+      if (res.ok) {
+        const d = await res.json();
+        const val = d.value; // e.g. "15.8k"
+        el.textContent = val;
+      }
+    } catch(_) {}
+  }
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
