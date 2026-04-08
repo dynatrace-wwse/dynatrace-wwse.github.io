@@ -5,7 +5,8 @@
     "desc": "Full-stack Kubernetes observability with OpenTelemetry. Instrument cloud-native workloads, collect distributed traces, metrics, and logs, and correlate with Dynatrace topology.",
     "tags": [
       "kubernetes",
-      "opentelemetry"
+      "opentelemetry",
+      "legacy"
     ],
     "primaryTag": "kubernetes",
     "duration": "3h"
@@ -93,7 +94,8 @@
     "desc": "Deploy and observe Azure Web Apps with OpenTelemetry and Dynatrace. End-to-end instrumentation of cloud-hosted applications on Microsoft Azure.",
     "tags": [
       "opentelemetry",
-      "kubernetes"
+      "azure",
+      "legacy"
     ],
     "primaryTag": "opentelemetry",
     "duration": "2h"
@@ -115,7 +117,8 @@
     "desc": "Configure OpenPipeline segments and IAM policies. Learn data routing, retention management, and access control for observability data in Dynatrace.",
     "tags": [
       "logs",
-      "kubernetes"
+      "kubernetes",
+      "legacy"
     ],
     "primaryTag": "logs",
     "duration": "2h"
@@ -127,7 +130,8 @@
     "tags": [
       "kubernetes",
       "opentelemetry",
-      "logs"
+      "logs",
+      "legacy"
     ],
     "primaryTag": "kubernetes",
     "duration": "3h"
@@ -160,7 +164,8 @@
     "title": "Destination Automation Workshop",
     "desc": "Workshop on destination automation with Dynatrace Workflows. Build end-to-end automated pipelines for alerting, ticketing, and remediation.",
     "tags": [
-      "workflows"
+      "workflows",
+      "ansible"
     ],
     "primaryTag": "workflows",
     "duration": "2h"
@@ -170,8 +175,7 @@
     "title": "Agentic AI with NVIDIA",
     "desc": "Hands-on demo showcasing agentic AI workflows powered by NVIDIA with full Dynatrace observability. Trace AI agents end-to-end, monitor model performance, and detect issues in real-time.",
     "tags": [
-      "gen-ai",
-      "application-security"
+      "gen-ai"
     ],
     "primaryTag": "gen-ai",
     "duration": "1.5h"
@@ -192,7 +196,8 @@
     "title": "OpenTelemetry Demo",
     "desc": "OpenTelemetry instrumentation demo with Dynatrace. See how traces, metrics, and logs flow from instrumented applications into the Dynatrace platform.",
     "tags": [
-      "opentelemetry"
+      "opentelemetry",
+      "sandbox"
     ],
     "primaryTag": "opentelemetry",
     "duration": "1h"
@@ -203,7 +208,8 @@
     "desc": "Optimize Astroshop runtime performance with Dynatrace. Identify bottlenecks, tune resource allocation, and measure improvements in a realistic microservices environment.",
     "tags": [
       "kubernetes",
-      "devops"
+      "devops",
+      "sandbox"
     ],
     "primaryTag": "kubernetes",
     "duration": "1.5h"
@@ -214,7 +220,8 @@
     "desc": "Troubleshoot Astroshop problem scenarios with Dynatrace. Practice root-cause analysis on realistic failure modes across a distributed microservices stack.",
     "tags": [
       "kubernetes",
-      "live-debugger"
+      "live-debugger",
+      "sanbox"
     ],
     "primaryTag": "kubernetes",
     "duration": "1.5h"
@@ -224,8 +231,8 @@
     "title": "ACE Integration",
     "desc": "ACE integration patterns with Dynatrace. Connect Autonomous Cloud Enablement tools and workflows into the Dynatrace platform.",
     "tags": [
-      "workflows",
-      "devops"
+      "sandbox",
+      "demo"
     ],
     "primaryTag": "workflows",
     "duration": "2h"
@@ -236,7 +243,8 @@
     "desc": "Simulate realistic user journeys for business observability. Generate BizEvents, session replays, and funnel data to practice Dynatrace analytics.",
     "tags": [
       "business-observability",
-      "rum"
+      "rum",
+      "demo"
     ],
     "primaryTag": "business-observability",
     "duration": "1h"
@@ -262,5 +270,15 @@
     ],
     "primaryTag": "devops",
     "duration": "2h"
+  },
+  {
+    "repo": "codespaces-framework",
+    "title": "codespaces-framework",
+    "desc": "Enablement framework \u2014 container image, sync CLI, core functions",
+    "tags": [
+      "framework"
+    ],
+    "primaryTag": "framework",
+    "duration": ""
   }
 ]
