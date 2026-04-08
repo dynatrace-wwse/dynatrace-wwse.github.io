@@ -1,0 +1,266 @@
+[
+  {
+    "repo": "enablement-kubernetes-opentelemetry",
+    "title": "Kubernetes & OpenTelemetry",
+    "desc": "Full-stack Kubernetes observability with OpenTelemetry. Instrument cloud-native workloads, collect distributed traces, metrics, and logs, and correlate with Dynatrace topology.",
+    "tags": [
+      "kubernetes",
+      "opentelemetry"
+    ],
+    "primaryTag": "kubernetes",
+    "duration": "3h"
+  },
+  {
+    "repo": "enablement-gen-ai-llm-observability",
+    "title": "GenAI & LLM Observability",
+    "desc": "Observe GenAI and LLM workloads end-to-end. Trace AI pipelines, monitor token usage and latency, and detect anomalies in AI-driven applications with Dynatrace.",
+    "tags": [
+      "gen-ai",
+      "opentelemetry"
+    ],
+    "primaryTag": "gen-ai",
+    "duration": "2h"
+  },
+  {
+    "repo": "enablement-business-observability",
+    "title": "Business Observability",
+    "desc": "Leverage Dynatrace BizEvents and dashboards to connect technical performance with real business outcomes. KPI tracking, funnel analysis, and custom business metrics.",
+    "tags": [
+      "business-observability"
+    ],
+    "primaryTag": "business-observability",
+    "duration": "3h"
+  },
+  {
+    "repo": "enablement-dql-301",
+    "title": "Advanced DQL 301",
+    "desc": "Master the Dynatrace Query Language at an advanced level. Build powerful cross-signal queries spanning logs, traces, metrics and business events.",
+    "tags": [
+      "logs",
+      "business-observability",
+      "kubernetes"
+    ],
+    "primaryTag": "logs",
+    "duration": "1h",
+    "iconKey": "dql"
+  },
+  {
+    "repo": "enablement-dynatrace-log-ingest-101",
+    "title": "Log Ingestion 101",
+    "desc": "Introduction to log ingestion and analytics. Learn how to ingest, parse, and analyse logs at scale using OpenPipeline and Dynatrace DQL.",
+    "tags": [
+      "logs",
+      "kubernetes"
+    ],
+    "primaryTag": "logs",
+    "duration": "2h"
+  },
+  {
+    "repo": "enablement-browser-dem-biz-observability",
+    "title": "Browser DEM & Business Observability",
+    "desc": "Browser Digital Experience Monitoring combined with business observability. Correlate real-user sessions with business KPIs in a single unified view.",
+    "tags": [
+      "rum",
+      "business-observability"
+    ],
+    "primaryTag": "rum",
+    "duration": "2h"
+  },
+  {
+    "repo": "enablement-live-debugger-bug-hunting",
+    "title": "Live Debugger & Bug Hunting",
+    "desc": "Diagnose production issues in real-world scenarios using Dynatrace Live Debugger \u2014 no redeploys, no restarts. Step through running code with full observability context.",
+    "tags": [
+      "live-debugger",
+      "devops"
+    ],
+    "primaryTag": "live-debugger",
+    "duration": "2h"
+  },
+  {
+    "repo": "enablement-workflow-essentials",
+    "title": "Workflow Essentials",
+    "desc": "Build automated remediation, alerting, and integration workflows using the Dynatrace Workflow engine. From simple notifications to complex multi-step automations.",
+    "tags": [
+      "workflows"
+    ],
+    "primaryTag": "workflows",
+    "duration": "2.5h"
+  },
+  {
+    "repo": "enablement-azure-webapp-otel",
+    "title": "Azure Web App & OpenTelemetry",
+    "desc": "Deploy and observe Azure Web Apps with OpenTelemetry and Dynatrace. End-to-end instrumentation of cloud-hosted applications on Microsoft Azure.",
+    "tags": [
+      "opentelemetry",
+      "kubernetes"
+    ],
+    "primaryTag": "opentelemetry",
+    "duration": "2h"
+  },
+  {
+    "repo": "enablement-codespaces-template",
+    "title": "Codespaces Enablement Template",
+    "desc": "The canonical template to kickstart your own enablement. All Codespaces Framework features pre-configured: docs, monitoring, devcontainer, and CI/CD out of the box.",
+    "tags": [
+      "devops"
+    ],
+    "primaryTag": "devops",
+    "duration": "1h",
+    "isTemplate": true
+  },
+  {
+    "repo": "enablement-openpipeline-segments-iam",
+    "title": "OpenPipeline Segments & IAM",
+    "desc": "Configure OpenPipeline segments and IAM policies. Learn data routing, retention management, and access control for observability data in Dynatrace.",
+    "tags": [
+      "logs",
+      "kubernetes"
+    ],
+    "primaryTag": "logs",
+    "duration": "2h"
+  },
+  {
+    "repo": "enablement-kubernetes-opentelemetry-openpipeline",
+    "title": "Kubernetes OTel & OpenPipeline",
+    "desc": "Combine Kubernetes OpenTelemetry collection with OpenPipeline processing. Route, transform, and enrich telemetry data before it reaches Dynatrace.",
+    "tags": [
+      "kubernetes",
+      "opentelemetry",
+      "logs"
+    ],
+    "primaryTag": "kubernetes",
+    "duration": "3h"
+  },
+  {
+    "repo": "enablement-dql-fundamentals",
+    "title": "DQL Fundamentals",
+    "desc": "Get started with the Dynatrace Query Language. Learn the fundamentals of querying logs, metrics, and events with hands-on exercises.",
+    "tags": [
+      "logs",
+      "business-observability"
+    ],
+    "primaryTag": "logs",
+    "duration": "1.5h",
+    "iconKey": "dql"
+  },
+  {
+    "repo": "workshop-dynatrace-log-analytics",
+    "title": "Log Analytics Workshop",
+    "desc": "Workshop-format hands-on lab for log analytics. From ingestion to root-cause analysis \u2014 master the full log management lifecycle with Dynatrace.",
+    "tags": [
+      "logs",
+      "kubernetes"
+    ],
+    "primaryTag": "logs",
+    "duration": "3h"
+  },
+  {
+    "repo": "workshop-destination-automation",
+    "title": "Destination Automation Workshop",
+    "desc": "Workshop on destination automation with Dynatrace Workflows. Build end-to-end automated pipelines for alerting, ticketing, and remediation.",
+    "tags": [
+      "workflows"
+    ],
+    "primaryTag": "workflows",
+    "duration": "2h"
+  },
+  {
+    "repo": "demo-agentic-ai-with-nvidia",
+    "title": "Agentic AI with NVIDIA",
+    "desc": "Hands-on demo showcasing agentic AI workflows powered by NVIDIA with full Dynatrace observability. Trace AI agents end-to-end, monitor model performance, and detect issues in real-time.",
+    "tags": [
+      "gen-ai",
+      "application-security"
+    ],
+    "primaryTag": "gen-ai",
+    "duration": "1.5h"
+  },
+  {
+    "repo": "demo-mcp-unguard",
+    "title": "MCP Unguard",
+    "desc": "Security-focused demo using Model Context Protocol with the Unguard intentionally vulnerable application. Explore threat detection, attack surface analysis, and application security with Dynatrace.",
+    "tags": [
+      "application-security",
+      "gen-ai"
+    ],
+    "primaryTag": "application-security",
+    "duration": "1h"
+  },
+  {
+    "repo": "demo-opentelemetry",
+    "title": "OpenTelemetry Demo",
+    "desc": "OpenTelemetry instrumentation demo with Dynatrace. See how traces, metrics, and logs flow from instrumented applications into the Dynatrace platform.",
+    "tags": [
+      "opentelemetry"
+    ],
+    "primaryTag": "opentelemetry",
+    "duration": "1h"
+  },
+  {
+    "repo": "demo-astroshop-runtime-optimization",
+    "title": "Astroshop Runtime Optimization",
+    "desc": "Optimize Astroshop runtime performance with Dynatrace. Identify bottlenecks, tune resource allocation, and measure improvements in a realistic microservices environment.",
+    "tags": [
+      "kubernetes",
+      "devops"
+    ],
+    "primaryTag": "kubernetes",
+    "duration": "1.5h"
+  },
+  {
+    "repo": "demo-astroshop-problems",
+    "title": "Astroshop Problem Scenarios",
+    "desc": "Troubleshoot Astroshop problem scenarios with Dynatrace. Practice root-cause analysis on realistic failure modes across a distributed microservices stack.",
+    "tags": [
+      "kubernetes",
+      "live-debugger"
+    ],
+    "primaryTag": "kubernetes",
+    "duration": "1.5h"
+  },
+  {
+    "repo": "ace-integration",
+    "title": "ACE Integration",
+    "desc": "ACE integration patterns with Dynatrace. Connect Autonomous Cloud Enablement tools and workflows into the Dynatrace platform.",
+    "tags": [
+      "workflows",
+      "devops"
+    ],
+    "primaryTag": "workflows",
+    "duration": "2h"
+  },
+  {
+    "repo": "bizobs-journey-simulator",
+    "title": "BizObs Journey Simulator",
+    "desc": "Simulate realistic user journeys for business observability. Generate BizEvents, session replays, and funnel data to practice Dynatrace analytics.",
+    "tags": [
+      "business-observability",
+      "rum"
+    ],
+    "primaryTag": "business-observability",
+    "duration": "1h"
+  },
+  {
+    "repo": "bug-busters",
+    "title": "Bug Busters",
+    "desc": "Gamified bug hunting and troubleshooting challenges. Race against the clock to find and fix production issues across a realistic microservices environment.",
+    "tags": [
+      "live-debugger",
+      "devops"
+    ],
+    "primaryTag": "live-debugger",
+    "duration": "1.5h"
+  },
+  {
+    "repo": "remote-environment",
+    "title": "Remote Environment",
+    "desc": "Provision and manage remote Dynatrace environments for distributed enablement scenarios. Streamline setup, configuration, and teardown of fully instrumented remote workspaces.",
+    "tags": [
+      "devops",
+      "kubernetes"
+    ],
+    "primaryTag": "devops",
+    "duration": "2h"
+  }
+]
