@@ -599,17 +599,7 @@ footer {
 
   <!-- category chips -->
   <div class="chips-row" role="group" aria-label="Filter by category" id="chips-row">
-    <button class="chip active" data-filter="all">All <span class="cbadge" id="badge-all">—</span></button>
-    <button class="chip" data-filter="kubernetes"             data-cat="kubernetes"             style="--chip-fg:#60a5fa;--chip-bg:rgba(96,165,250,.12);--chip-bd:rgba(96,165,250,.32);--chip-bd-h:rgba(96,165,250,.6);--chip-glow:rgba(96,165,250,.35)"><span class="cdot"></span>Kubernetes             <span class="cbadge" id="badge-kubernetes">—</span></button>
-    <button class="chip" data-filter="opentelemetry"          data-cat="opentelemetry"          style="--chip-fg:#fbbf24;--chip-bg:rgba(251,191,36,.12);--chip-bd:rgba(251,191,36,.32);--chip-bd-h:rgba(251,191,36,.6);--chip-glow:rgba(251,191,36,.35)"><span class="cdot"></span>OpenTelemetry          <span class="cbadge" id="badge-opentelemetry">—</span></button>
-    <button class="chip" data-filter="rum"                    data-cat="rum"                    style="--chip-fg:#22d3ee;--chip-bg:rgba(34,211,238,.12);--chip-bd:rgba(34,211,238,.32);--chip-bd-h:rgba(34,211,238,.6);--chip-glow:rgba(34,211,238,.35)"><span class="cdot"></span>RUM                    <span class="cbadge" id="badge-rum">—</span></button>
-    <button class="chip" data-filter="logs"                   data-cat="logs"                   style="--chip-fg:#c4b5fd;--chip-bg:rgba(196,181,253,.12);--chip-bd:rgba(196,181,253,.32);--chip-bd-h:rgba(196,181,253,.6);--chip-glow:rgba(196,181,253,.35)"><span class="cdot"></span>Logs                   <span class="cbadge" id="badge-logs">—</span></button>
-    <button class="chip" data-filter="business-observability" data-cat="business-observability" style="--chip-fg:#4ade80;--chip-bg:rgba(74,222,128,.12);--chip-bd:rgba(74,222,128,.32);--chip-bd-h:rgba(74,222,128,.6);--chip-glow:rgba(74,222,128,.35)"><span class="cdot"></span>Business Observability <span class="cbadge" id="badge-business-observability">—</span></button>
-    <button class="chip" data-filter="live-debugger"          data-cat="live-debugger"          style="--chip-fg:#fb7185;--chip-bg:rgba(251,113,133,.12);--chip-bd:rgba(251,113,133,.32);--chip-bd-h:rgba(251,113,133,.6);--chip-glow:rgba(251,113,133,.35)"><span class="cdot"></span>Live Debugger          <span class="cbadge" id="badge-live-debugger">—</span></button>
-    <button class="chip" data-filter="workflows"              data-cat="workflows"              style="--chip-fg:#fb923c;--chip-bg:rgba(251,146,60,.12);--chip-bd:rgba(251,146,60,.32);--chip-bd-h:rgba(251,146,60,.6);--chip-glow:rgba(251,146,60,.35)"><span class="cdot"></span>Workflows              <span class="cbadge" id="badge-workflows">—</span></button>
-    <button class="chip" data-filter="gen-ai"                 data-cat="gen-ai"                 style="--chip-fg:#e879f9;--chip-bg:rgba(232,121,249,.12);--chip-bd:rgba(232,121,249,.32);--chip-bd-h:rgba(232,121,249,.6);--chip-glow:rgba(232,121,249,.35)"><span class="cdot"></span>Gen AI                 <span class="cbadge" id="badge-gen-ai">—</span></button>
-    <button class="chip" data-filter="devops"                 data-cat="devops"                 style="--chip-fg:#94a3b8;--chip-bg:rgba(148,163,184,.12);--chip-bd:rgba(148,163,184,.32);--chip-bd-h:rgba(148,163,184,.6);--chip-glow:rgba(148,163,184,.35)"><span class="cdot"></span>DevOps                 <span class="cbadge" id="badge-devops">—</span></button>
-    <button class="chip" data-filter="application-security"   data-cat="application-security"   style="--chip-fg:#a78bfa;--chip-bg:rgba(167,139,250,.12);--chip-bd:rgba(167,139,250,.32);--chip-bd-h:rgba(167,139,250,.6);--chip-glow:rgba(167,139,250,.35)"><span class="cdot"></span>Application Security   <span class="cbadge" id="badge-application-security">—</span></button>
+    <!-- chips are generated dynamically from repos.json tags -->
   </div>
 
   <!-- grid (rendered by JS) -->
@@ -716,6 +706,20 @@ const CAT_HEX = {
   'application-security':   '#a78bfa',
 };
 
+// Fallback palette for new categories not yet in CAT_HEX
+const FALLBACK_COLORS = ['#f472b6','#38bdf8','#a3e635','#facc15','#fb7185','#34d399','#c084fc','#f97316'];
+let _fallbackIdx = 0;
+function getCatHex(cat) {
+  if (!CAT_HEX[cat]) {
+    CAT_HEX[cat] = FALLBACK_COLORS[_fallbackIdx % FALLBACK_COLORS.length];
+    _fallbackIdx++;
+    // Also register CSS var and CAT_VAR for card accents
+    document.documentElement.style.setProperty(`--c-${cat}`, CAT_HEX[cat]);
+    CAT_VAR[cat] = `var(--c-${cat})`;
+  }
+  return CAT_HEX[cat];
+}
+
 const GH_ORG = 'dynatrace-wwse';
 const GH_BASE = `https://github.com/${GH_ORG}`;
 const DOCS_BASE = `https://dynatrace-wwse.github.io`;
@@ -757,6 +761,7 @@ function fmtDuration(h) {
 // ── Render ───────────────────────────────────────────────────────
 function renderCard(r, delay) {
   const gh = githubData[r.repo] || {};
+  getCatHex(r.primaryTag); // ensure CSS var is registered
   const catColor = CAT_VAR[r.primaryTag] || 'var(--accent)';
   const icon = ICONS[r.iconKey || r.primaryTag] || ICONS.default;
   const ghUrl = `${GH_BASE}/${r.repo}`;
@@ -767,7 +772,7 @@ function renderCard(r, delay) {
   const fresh = isNew(updatedAt);
 
   const tagsHtml = r.tags.map(t => {
-    const hex = CAT_HEX[t] || '#00b4de';
+    const hex = getCatHex(t);
     // parse hex to r,g,b for rgba usage
     const r2 = parseInt(hex.slice(1,3),16);
     const g2 = parseInt(hex.slice(3,5),16);
@@ -850,15 +855,38 @@ function sortedRepos() {
 function updateBadgeCounts() {
   // Update hero stat
   document.getElementById('stat-total').textContent = REPOS.length;
-  // Update "All" badge
-  const allBadge = document.getElementById('badge-all');
-  if (allBadge) allBadge.textContent = REPOS.length;
-  // Update per-category badges
+
+  // Count per-category
   const cats = {};
   REPOS.forEach(r => r.tags.forEach(t => { cats[t] = (cats[t] || 0) + 1; }));
-  Object.entries(cats).forEach(([cat, count]) => {
-    const el = document.getElementById(`badge-${cat}`);
-    if (el) el.textContent = count;
+
+  // Build chips dynamically
+  const row = document.getElementById('chips-row');
+  row.innerHTML = '';
+
+  // "All" chip
+  const allBtn = document.createElement('button');
+  allBtn.className = 'chip active';
+  allBtn.dataset.filter = 'all';
+  allBtn.innerHTML = `All <span class="cbadge">${REPOS.length}</span>`;
+  row.appendChild(allBtn);
+
+  // Sort categories by count descending
+  const sorted = Object.entries(cats).sort((a, b) => b[1] - a[1]);
+
+  sorted.forEach(([cat, count]) => {
+    const hex = getCatHex(cat);
+    const r = parseInt(hex.slice(1,3),16);
+    const g = parseInt(hex.slice(3,5),16);
+    const b = parseInt(hex.slice(5,7),16);
+    const btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.dataset.filter = cat;
+    btn.dataset.cat = cat;
+    btn.style.cssText = `--chip-fg:${hex};--chip-bg:rgba(${r},${g},${b},.12);--chip-bd:rgba(${r},${g},${b},.32);--chip-bd-h:rgba(${r},${g},${b},.6);--chip-glow:rgba(${r},${g},${b},.35)`;
+    const label = cat.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    btn.innerHTML = `<span class="cdot"></span>${label} <span class="cbadge">${count}</span>`;
+    row.appendChild(btn);
   });
 }
 
