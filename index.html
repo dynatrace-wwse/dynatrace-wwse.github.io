@@ -362,11 +362,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: .15rem .45rem; border-radius: 4px; text-transform: uppercase;
 }
 .badge-duration {
-  font-size: .65rem; font-weight: 600; letter-spacing: .04em;
-  background: var(--surface-2); color: var(--text-2);
-  border: 1px solid rgba(255,255,255,.2);
+  font-size: .65rem; font-weight: 800; letter-spacing: .06em;
+  background: rgba(52,211,153,.2); color: #5eedb5;
+  border: 1px solid rgba(52,211,153,.38);
   padding: .15rem .5rem; border-radius: 4px;
   display: inline-flex; align-items: center; gap: .28rem;
+  text-transform: uppercase;
 }
 .badge-duration svg { width: 9px; height: 9px; flex-shrink: 0; }
 .time-pill {
@@ -592,6 +593,7 @@ footer {
         <option value="default">Sort: Default</option>
         <option value="stars">Sort: Stars</option>
         <option value="updated">Sort: Recently Updated</option>
+        <option value="duration">Sort: Duration</option>
         <option value="alpha">Sort: A–Z</option>
       </select>
     </div>
@@ -744,9 +746,9 @@ function relTime(iso) {
   if (sec < 2592000)return `${Math.floor(sec/604800)}w ago`;
   return new Date(iso).toLocaleDateString('en-US',{month:'short',year:'numeric'});
 }
-function isNew(iso) {
-  if (!iso) return false;
-  return (Date.now() - new Date(iso)) < 30 * 24 * 3600 * 1000;
+function isNew(createdAt) {
+  if (!createdAt) return false;
+  return (Date.now() - new Date(createdAt)) < 90 * 24 * 3600 * 1000;
 }
 function fmt(n) {
   if (n === undefined) return '—';
@@ -771,7 +773,7 @@ function renderCard(r, delay) {
   const stars = gh.stars;
   const forks = gh.forks;
   const updatedAt = gh.updatedAt;
-  const fresh = isNew(updatedAt);
+  const fresh = isNew(gh.createdAt);
 
   const tagsHtml = r.tags.map(t => {
     const hex = getCatHex(t);
@@ -850,6 +852,7 @@ function sortedRepos() {
   const arr = [...REPOS];
   if (sortBy === 'stars')   arr.sort((a,b) => (githubData[b.repo]?.stars||0) - (githubData[a.repo]?.stars||0));
   if (sortBy === 'updated') arr.sort((a,b) => (githubData[b.repo]?.updatedAt||'') > (githubData[a.repo]?.updatedAt||'') ? 1 : -1);
+  if (sortBy === 'duration') arr.sort((a,b) => parseDuration(b.duration) - parseDuration(a.duration));
   if (sortBy === 'alpha')   arr.sort((a,b) => a.title.localeCompare(b.title));
   return arr;
 }
@@ -988,7 +991,7 @@ function applyGithubData() {
     items[1].querySelector('span').textContent = fmt(gh.forks);
     items[2].classList.remove('loading');
     items[2].querySelector('span').textContent = relTime(gh.updatedAt);
-    if (isNew(gh.updatedAt) && !card.querySelector('.badge-new')) {
+    if (isNew(gh.createdAt) && !card.querySelector('.badge-new')) {
       const b = document.createElement('span');
       b.className = 'badge-new'; b.textContent = 'New';
       card.querySelector('.card-badges').prepend(b);
@@ -1017,7 +1020,7 @@ async function fetchGithubStats(force = false) {
       });
       if (!res.ok) return;
       const d = await res.json();
-      githubData[r.repo] = { stars: d.stargazers_count, forks: d.forks_count, updatedAt: d.pushed_at };
+      githubData[r.repo] = { stars: d.stargazers_count, forks: d.forks_count, updatedAt: d.pushed_at, createdAt: d.created_at };
     } catch(_) {}
   }));
 
