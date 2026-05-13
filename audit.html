@@ -190,13 +190,13 @@
 </head>
 <body>
 <h1>Enablement Framework -- Master Technical Audit</h1>
-<p class="subtitle">Generated: 2026-05-12 16:22 | Repos: 27 | Org: dynatrace-wwse</p>
+<p class="subtitle">Generated: 2026-05-13 11:16 | Repos: 27 | Org: dynatrace-wwse</p>
 
 
 <div class="stats">
   <div class="stat-card"><div class="num">27</div><div class="label">Total Repos</div></div>
   <div class="stat-card"><div class="num">24</div><div class="label">Have devcontainer</div></div>
-  <div class="stat-card"><div class="num">23</div><div class="label">Sync Managed</div></div>
+  <div class="stat-card"><div class="num">22</div><div class="label">Sync Managed</div></div>
   <div class="stat-card"><div class="num">25</div><div class="label">Have mkdocs.yaml</div></div>
   <div class="stat-card"><div class="num">24</div><div class="label">Have RUM Snippet</div></div>
   <div class="stat-card"><div class="num">16</div><div class="label">Unique RUM IDs</div></div>
@@ -326,7 +326,7 @@ REPO_PATH</td>
 <td>2</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_LLM_TOKEN</td>
+<td class="secrets-cell warn">DT_LLM_TOKEN<br>DT_ENVIRONMENT</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -365,7 +365,7 @@ NAMESPACE</td>
 <td>6</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_INGEST_TOKEN<br>DT_OPERATOR_TOKEN</td>
+<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN<br>DT_INGEST_TOKEN</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -522,7 +522,7 @@ index.md</td>
 <td>5</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_INGEST_TOKEN<br>DT_OPERATOR_TOKEN</td>
+<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN<br>DT_INGEST_TOKEN</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -695,14 +695,14 @@ printInfoSection</td>
 <td>dt-enablement</td>
 <td><span class="tag">devops</span></td>
 </tr>
-<tr data-search="enablement-openpipeline-segments-iam logs kubernetes legacy shinojosa/dt-enablement:v1.2" data-status="active" data-sync="true" data-risk="GREEN">
+<tr data-search="enablement-openpipeline-segments-iam logs kubernetes legacy shinojosa/dt-enablement:v1.2" data-status="active" data-sync="false" data-risk="GREEN">
 <td><a href="https://github.com/dynatrace-wwse/enablement-openpipeline-segments-iam" target="_blank">enablement-openpipeline-segments-iam</a></td>
 <td class="neutral">2024-12-05</td>
 <td class="neutral">No</td>
 <td>4</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENV<br>DT_OAUTH_CLIENT_ID<br>DT_ENV_NAME<br>DT_OAUTH_ACCOUNT_URN<br>DT_RW_API_TOKEN<br>DT_OAUTH_CLIENT_SECRET</td>
+<td class="secrets-cell warn">DT_OAUTH_CLIENT_SECRET<br>DT_OAUTH_ACCOUNT_URN<br>DT_ENV_NAME<br>DT_OAUTH_CLIENT_ID<br>DT_RW_API_TOKEN<br>DT_ENV</td>
 <td class="missing">N/A</td>
 <td class="neutral">—</td>
 <td class="missing">N/A</td>
@@ -722,7 +722,7 @@ printInfoSection</td>
 <td class="good"><strong>GREEN</strong></td>
 <td class="neutral">—</td>
 <td class="neutral">—</td>
-<td class="good"><span class="tag badge-sync">Managed</span></td>
+<td class="warn">Unmanaged</td>
 <td class="good">active</td>
 <td>dt-enablement</td>
 <td><span class="tag">logs</span> <span class="tag">kubernetes</span> <span class="tag">legacy</span></td>
@@ -779,7 +779,7 @@ REPO_PATH</td>
 <td>4</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_INGEST_TOKEN<br>DT_OPERATOR_TOKEN</td>
+<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN<br>DT_INGEST_TOKEN</td>
 <td class="wrap">setUpTerminal
 finalizePostCreation
 printInfoSection</td>
@@ -884,7 +884,7 @@ _check_env_var()</td>
 <td>1</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_BASE_URL<br>TAVILY_API_KEY<br>DT_API_TOKEN<br>NVIDIA_API_KEY<br>DT_ENVIRONMENT</td>
+<td class="secrets-cell warn">DT_API_TOKEN<br>DT_ENVIRONMENT<br>NVIDIA_API_KEY<br>DT_BASE_URL<br>TAVILY_API_KEY</td>
 <td class="wrap">setUpTerminal
 verifyEnvironmentVars
 startOtelCollector
@@ -1039,7 +1039,7 @@ PORT</td>
 <td>1</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_INGEST_TOKEN<br>DT_OPERATOR_TOKEN</td>
+<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN<br>DT_INGEST_TOKEN</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -1219,7 +1219,7 @@ getting-started.md</td>
 <td>4</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_OPERATOR_TOKEN<br>DT_ENVIRONMENT<br>DT_APP_OAUTH_CLIENT_SECRET<br>DT_APP_OAUTH_CLIENT_ID</td>
+<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_OPERATOR_TOKEN<br>DT_APP_OAUTH_CLIENT_SECRET<br>DT_ENVIRONMENT<br>DT_APP_OAUTH_CLIENT_ID</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -1311,7 +1311,7 @@ Settings &gt;</td>
 <td>1</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_INGEST_TOKEN<br>DT_OPERATOR_TOKEN</td>
+<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN<br>DT_INGEST_TOKEN</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
