@@ -112,18 +112,6 @@
     "isTemplate": true
   },
   {
-    "repo": "enablement-openpipeline-segments-iam",
-    "title": "OpenPipeline Segments & IAM",
-    "desc": "Configure OpenPipeline segments and IAM policies. Learn data routing, retention management, and access control for observability data in Dynatrace.",
-    "tags": [
-      "logs",
-      "kubernetes",
-      "legacy"
-    ],
-    "primaryTag": "logs",
-    "duration": "2h"
-  },
-  {
     "repo": "enablement-kubernetes-opentelemetry-openpipeline",
     "title": "Kubernetes OTel & OpenPipeline",
     "desc": "Combine Kubernetes OpenTelemetry collection with OpenPipeline processing. Route, transform, and enrich telemetry data before it reaches Dynatrace.",
