@@ -12,6 +12,18 @@
     "duration": "3h"
   },
   {
+    "repo": "enablement-dynatrace-ai-mcp",
+    "title": "AI Observability & MCP",
+    "desc": "Hands-on AI/LLM observability workshop. Instrument a RAG application with OpenLLMetry, analyze traces in Dynatrace, and use the Dynatrace MCP server for agentic AI workflows.",
+    "tags": [
+      "gen-ai",
+      "opentelemetry",
+      "mcp"
+    ],
+    "primaryTag": "gen-ai",
+    "duration": "2h"
+  },
+  {
     "repo": "enablement-gen-ai-llm-observability",
     "title": "GenAI & LLM Observability",
     "desc": "Observe GenAI and LLM workloads end-to-end. Trace AI pipelines, monitor token usage and latency, and detect anomalies in AI-driven applications with Dynatrace.",
