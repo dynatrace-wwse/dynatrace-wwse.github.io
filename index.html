@@ -477,6 +477,54 @@ footer {
   .tb-links .tb-link:not(.cta) { display: none; }
   .ft-grid { grid-template-columns: 1fr; gap: 1.75rem; }
 }
+
+/* ─── Orbital status icon ─────────────────────────────────────── */
+.tb-orbital {
+  display: flex; align-items: center; gap: .6rem;
+  text-decoration: none; color: var(--text-2);
+  font-size: .75rem; font-weight: 600; letter-spacing: .04em;
+  padding: .3rem .5rem; border-radius: var(--r-sm);
+  transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+.tb-orbital:hover { color: var(--text); background: rgba(255,255,255,.05); }
+.orbital-icon {
+  position: relative; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.orbital-icon::before {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  border: 1.5px dashed rgba(0,180,222,.22); pointer-events: none;
+}
+.orbital-planet {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 7px rgba(0,180,222,.7), 0 0 14px rgba(0,180,222,.2);
+  position: relative; z-index: 2;
+}
+.orbital-arm {
+  position: absolute; inset: 0; border-radius: 50%;
+  animation: orbit-spin 3.4s linear infinite; pointer-events: none;
+}
+.orbital-arm::after {
+  content: ''; position: absolute; top: -3px; left: 50%;
+  transform: translateX(-50%);
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #94a3b8; box-shadow: 0 0 4px rgba(148,163,184,.4);
+}
+@keyframes orbit-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.orbital-dot {
+  position: absolute; bottom: 2px; right: 1px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--text-3); border: 2px solid var(--bg);
+  transition: background .4s, box-shadow .4s; z-index: 3;
+}
+.orbital-dot.healthy  { background:#4ade80; box-shadow:0 0 6px rgba(74,222,128,.6); animation:orb-pulse 2.2s ease infinite; }
+.orbital-dot.degraded { background:#fbbf24; box-shadow:0 0 5px rgba(251,191,36,.4); }
+.orbital-dot.unhealthy{ background:#fb7185; box-shadow:0 0 5px rgba(251,113,133,.4); }
+@keyframes orb-pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+.tb-orbital-label { display:none; }
+@media(min-width:900px){ .tb-orbital-label { display:inline; } }
 </style>
 </head>
 <body>
@@ -493,6 +541,14 @@ footer {
       <input id="search-input" type="search" placeholder="Search enablements, categories…" autocomplete="off" spellcheck="false">
     </div>
     <nav class="tb-links">
+      <a id="orbital-link" href="https://autonomous-enablements.whydevslovedynatrace.com" target="_blank" rel="noopener" class="tb-orbital" title="Orbital — checking…">
+        <div class="orbital-icon">
+          <div class="orbital-arm"></div>
+          <div class="orbital-planet"></div>
+          <span class="orbital-dot"></span>
+        </div>
+        <span class="tb-orbital-label">Orbital</span>
+      </a>
       <a class="tb-link" href="https://dynatrace-wwse.github.io/codespaces-framework/" target="_blank" rel="noopener">Framework</a>
       <a class="tb-link" href="https://github.com/dynatrace-wwse" target="_blank" rel="noopener">GitHub</a>
       <a class="tb-link cta" href="https://github.com/dynatrace-wwse/enablement-codespaces-template" target="_blank" rel="noopener">
@@ -1079,6 +1135,26 @@ particlesJS('particles-js', {
   },
   "retina_detect": true
 });
+</script>
+<script>
+(function(){
+  async function checkOrbitalHealth(){
+    const el=document.getElementById('orbital-link');
+    const dot=el&&el.querySelector('.orbital-dot');
+    try{
+      const r=await fetch('https://autonomous-enablements.whydevslovedynatrace.com/api/health',{signal:AbortSignal.timeout(5000)});
+      const d=await r.json();
+      const s=d.status==='healthy'?'healthy':'degraded';
+      if(dot)dot.className='orbital-dot '+s;
+      if(el)el.title='Orbital — '+d.status+(d.workers!=null?' · '+d.workers+' worker(s)':'');
+    }catch(_){
+      if(dot)dot.className='orbital-dot unhealthy';
+      if(el)el.title='Orbital — unreachable';
+    }
+  }
+  checkOrbitalHealth();
+  setInterval(checkOrbitalHealth,60000);
+})();
 </script>
 </body>
 </html>
