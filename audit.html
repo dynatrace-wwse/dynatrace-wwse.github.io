@@ -190,17 +190,17 @@
 </head>
 <body>
 <h1>Enablement Framework -- Master Technical Audit</h1>
-<p class="subtitle">Generated: 2026-05-18 15:02 | Repos: 27 | Org: dynatrace-wwse</p>
+<p class="subtitle">Generated: 2026-05-20 11:27 | Repos: 27 | Org: dynatrace-wwse</p>
 
 
 <div class="stats">
   <div class="stat-card"><div class="num">27</div><div class="label">Total Repos</div></div>
   <div class="stat-card"><div class="num">24</div><div class="label">Have devcontainer</div></div>
   <div class="stat-card"><div class="num">23</div><div class="label">Sync Managed</div></div>
-  <div class="stat-card"><div class="num">25</div><div class="label">Have mkdocs.yaml</div></div>
+  <div class="stat-card"><div class="num">24</div><div class="label">Have mkdocs.yaml</div></div>
   <div class="stat-card"><div class="num">24</div><div class="label">Have RUM Snippet</div></div>
-  <div class="stat-card"><div class="num">16</div><div class="label">Unique RUM IDs</div></div>
-  <div class="stat-card"><div class="num">24</div><div class="label">Have Badges</div></div>
+  <div class="stat-card"><div class="num">24</div><div class="label">Unique RUM IDs</div></div>
+  <div class="stat-card"><div class="num">25</div><div class="label">Have Badges</div></div>
   <div class="stat-card"><div class="num">0</div><div class="label">Forks</div></div>
   <div class="stat-card"><div class="num">354</div><div class="label">Total Doc Pages</div></div>
   <div class="stat-card"><div class="num">881</div><div class="label">Total Screenshots</div></div>
@@ -273,7 +273,7 @@
 <td><a href="https://github.com/dynatrace-wwse/enablement-kubernetes-opentelemetry" target="_blank">enablement-kubernetes-opentelemetry</a></td>
 <td class="neutral">2025-02-12</td>
 <td class="neutral">No</td>
-<td>3</td>
+<td>4</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
 <td class="neutral">None</td>
@@ -323,7 +323,7 @@ REPO_PATH</td>
 <td><a href="https://github.com/dynatrace-wwse/enablement-gen-ai-llm-observability" target="_blank">enablement-gen-ai-llm-observability</a></td>
 <td class="neutral">2025-04-16</td>
 <td class="neutral">No</td>
-<td>2</td>
+<td>3</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
 <td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_LLM_TOKEN</td>
@@ -362,10 +362,10 @@ NAMESPACE</td>
 <td><a href="https://github.com/dynatrace-wwse/enablement-business-observability" target="_blank">enablement-business-observability</a></td>
 <td class="neutral">2025-03-11</td>
 <td class="neutral">No</td>
-<td>6</td>
+<td>7</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_OPERATOR_TOKEN<br>DT_ENVIRONMENT<br>DT_INGEST_TOKEN</td>
+<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -438,12 +438,12 @@ Process group</td>
 <td><a href="https://github.com/dynatrace-wwse/enablement-dynatrace-log-ingest-101" target="_blank">enablement-dynatrace-log-ingest-101</a></td>
 <td class="neutral">2025-04-18</td>
 <td class="neutral">No</td>
-<td>3</td>
+<td>4</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
 <td class="neutral">None</td>
 <td class="wrap">setUpTerminal
-startKindCluster
+startK3dCluster
 installK9s
 deployAstroshop
 deployCronJobs
@@ -456,7 +456,7 @@ deployCronJobs()</td>
 <td class="good">19</td>
 <td class="good">Standard</td>
 <td class="missing">None</td>
-<td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
+<td class="good tooltip" data-tip="fwd:[8080]; attr:[&#x27;8080&#x27;]">Yes</td>
 <td class="good">Yes</td>
 <td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/1551d00ab46737d4_complete.js">1551d00ab467...</td>
 <td class="good">Unique</td>
@@ -519,10 +519,10 @@ index.md</td>
 <td><a href="https://github.com/dynatrace-wwse/enablement-live-debugger-bug-hunting" target="_blank">enablement-live-debugger-bug-hunting</a></td>
 <td class="neutral">2025-04-03</td>
 <td class="neutral">No</td>
-<td>5</td>
+<td>6</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_OPERATOR_TOKEN<br>DT_ENVIRONMENT<br>DT_INGEST_TOKEN</td>
+<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -552,11 +552,13 @@ clearCompletedTasks()
 assertBugsAndRedeployment()
 replaceTodoController()
 assertBug2isThere()</td>
-<td class="wrap">APPLICATION_URL
+<td class="wrap">APPLICATION_HOST
+APPLICATION_URL
 DEPLOYMENT_NAME
 DT_LIVEDEBUGGER_COMMIT
 DT_LIVEDEBUGGER_REMOTE_ORIGIN
 IMAGE_NAME
+K3D_LB_HTTP_PORT
 NAMESPACE</td>
 <td class="good">19</td>
 <td class="good">Standard</td>
@@ -624,7 +626,7 @@ printInfoSection</td>
 <td>1</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_INGEST_TOKEN</td>
+<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_ENVIRONMENT</td>
 <td class="wrap">setUpTerminal
 installDotNet
 runWebapp
@@ -643,8 +645,8 @@ REPO_PATH</td>
 <td class="missing">None</td>
 <td class="good tooltip" data-tip="fwd:[5000]; attr:[&#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
-<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/7c50bce5c0cc890f_complete.js">7c50bce5c0cc...</td>
-<td class="warn tooltip" data-tip="Shared with: enablement-codespaces-template, demo-opentelemetry, demo-astroshop-problems, ace-integration, bizobs-journey-simulator">Shared (6)</td>
+<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/35e3adf9b2105f6e_complete.js">35e3adf9b210...</td>
+<td class="good">Unique</td>
 <td class="good">Yes</td>
 <td>13</td>
 <td>6</td>
@@ -681,7 +683,7 @@ printInfoSection</td>
 <td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
 <td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/7c50bce5c0cc890f_complete.js">7c50bce5c0cc...</td>
-<td class="warn tooltip" data-tip="Shared with: enablement-azure-webapp-otel, demo-opentelemetry, demo-astroshop-problems, ace-integration, bizobs-journey-simulator">Shared (6)</td>
+<td class="good">Unique</td>
 <td class="good">Yes</td>
 <td>13</td>
 <td>6</td>
@@ -702,7 +704,7 @@ printInfoSection</td>
 <td>4</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENV<br>DT_OAUTH_ACCOUNT_URN<br>DT_RW_API_TOKEN<br>DT_ENV_NAME<br>DT_OAUTH_CLIENT_ID<br>DT_OAUTH_CLIENT_SECRET</td>
+<td class="secrets-cell warn">DT_OAUTH_CLIENT_ID<br>DT_RW_API_TOKEN<br>DT_ENV<br>DT_ENV_NAME<br>DT_OAUTH_ACCOUNT_URN<br>DT_OAUTH_CLIENT_SECRET</td>
 <td class="missing">N/A</td>
 <td class="neutral">—</td>
 <td class="missing">N/A</td>
@@ -731,7 +733,7 @@ printInfoSection</td>
 <td><a href="https://github.com/dynatrace-wwse/enablement-kubernetes-opentelemetry-openpipeline" target="_blank">enablement-kubernetes-opentelemetry-openpipeline</a></td>
 <td class="neutral">2025-03-12</td>
 <td class="neutral">No</td>
-<td>2</td>
+<td>3</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
 <td class="neutral">None</td>
@@ -752,7 +754,7 @@ DT_API_TOKEN
 DT_ENDPOINT
 NAME
 REPO_PATH</td>
-<td class="good">8</td>
+<td class="good">19</td>
 <td class="good">Standard</td>
 <td class="missing">None</td>
 <td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
@@ -779,7 +781,7 @@ REPO_PATH</td>
 <td>4</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_OPERATOR_TOKEN<br>DT_ENVIRONMENT<br>DT_INGEST_TOKEN</td>
+<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN</td>
 <td class="wrap">setUpTerminal
 finalizePostCreation
 printInfoSection</td>
@@ -810,7 +812,7 @@ printInfoSection</td>
 <td><a href="https://github.com/dynatrace-wwse/workshop-dynatrace-log-analytics" target="_blank">workshop-dynatrace-log-analytics</a></td>
 <td class="neutral">2025-09-08</td>
 <td class="neutral">No</td>
-<td>2</td>
+<td>3</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
 <td class="neutral">None</td>
@@ -849,7 +851,7 @@ _check_env_var()</td>
 <td><a href="https://github.com/dynatrace-wwse/workshop-destination-automation" target="_blank">workshop-destination-automation</a></td>
 <td class="neutral">2026-04-01</td>
 <td class="neutral">No</td>
-<td>1</td>
+<td>2</td>
 <td class="missing">N/A</td>
 <td class="missing tooltip" data-tip="None">0</td>
 <td class="neutral">None</td>
@@ -861,7 +863,7 @@ _check_env_var()</td>
 <td class="warn">No badges</td>
 <td class="missing">None</td>
 <td class="missing">No</td>
-<td class="good">Yes</td>
+<td class="missing">No</td>
 <td class="missing">Missing</td>
 <td class="missing">N/A</td>
 <td class="missing">No</td>
@@ -884,7 +886,7 @@ _check_env_var()</td>
 <td>1</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>TAVILY_API_KEY<br>DT_API_TOKEN<br>NVIDIA_API_KEY<br>DT_BASE_URL</td>
+<td class="secrets-cell warn">NVIDIA_API_KEY<br>DT_BASE_URL<br>TAVILY_API_KEY<br>DT_ENVIRONMENT<br>DT_API_TOKEN</td>
 <td class="wrap">setUpTerminal
 verifyEnvironmentVars
 startOtelCollector
@@ -977,7 +979,7 @@ REPO_PATH</td>
 <td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
 <td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/300531523b332e3_complete.js">300531523b33...</td>
-<td class="warn tooltip" data-tip="Shared with: demo-astroshop-runtime-optimization">Shared (2)</td>
+<td class="good">Unique</td>
 <td class="good">Yes</td>
 <td>12</td>
 <td>7</td>
@@ -995,7 +997,7 @@ REPO_PATH</td>
 <td><a href="https://github.com/dynatrace-wwse/demo-opentelemetry" target="_blank">demo-opentelemetry</a></td>
 <td class="neutral">2026-01-14</td>
 <td class="neutral">No</td>
-<td>1</td>
+<td>2</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
 <td class="neutral">None</td>
@@ -1017,8 +1019,8 @@ PORT</td>
 <td class="missing">None</td>
 <td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
-<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/7c50bce5c0cc890f_complete.js">7c50bce5c0cc...</td>
-<td class="warn tooltip" data-tip="Shared with: enablement-azure-webapp-otel, enablement-codespaces-template, demo-astroshop-problems, ace-integration, bizobs-journey-simulator">Shared (6)</td>
+<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/639f4c488fd20b9b_complete.js">639f4c488fd2...</td>
+<td class="good">Unique</td>
 <td class="good">Yes</td>
 <td>13</td>
 <td>8</td>
@@ -1039,7 +1041,7 @@ PORT</td>
 <td>1</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_OPERATOR_TOKEN<br>DT_ENVIRONMENT<br>DT_INGEST_TOKEN</td>
+<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -1063,8 +1065,8 @@ SERVER_URL</td>
 <td class="missing">None</td>
 <td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
-<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/300531523b332e3_complete.js">300531523b33...</td>
-<td class="warn tooltip" data-tip="Shared with: demo-mcp-unguard">Shared (2)</td>
+<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/dafdc1b85d10563b_complete.js">dafdc1b85d10...</td>
+<td class="good">Unique</td>
 <td class="good">Yes</td>
 <td>12</td>
 <td>7</td>
@@ -1093,13 +1095,13 @@ printInfoSection</td>
 <td class="wrap">printInfoSection</td>
 <td class="wrap good">customFunction()</td>
 <td class="neutral">—</td>
-<td class="good">16</td>
+<td class="good">19</td>
 <td class="good">Standard</td>
 <td class="missing">None</td>
 <td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
-<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/7c50bce5c0cc890f_complete.js">7c50bce5c0cc...</td>
-<td class="warn tooltip" data-tip="Shared with: enablement-azure-webapp-otel, enablement-codespaces-template, demo-opentelemetry, ace-integration, bizobs-journey-simulator">Shared (6)</td>
+<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/d0d550817d997156_complete.js">d0d550817d99...</td>
+<td class="good">Unique</td>
 <td class="good">Yes</td>
 <td>13</td>
 <td>8</td>
@@ -1117,7 +1119,7 @@ printInfoSection</td>
 <td><a href="https://github.com/dynatrace-wwse/ace-integration" target="_blank">ace-integration</a></td>
 <td class="neutral">2025-12-04</td>
 <td class="neutral">No</td>
-<td>1</td>
+<td>2</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
 <td class="secrets-cell warn">DT_API_TOKEN<br>DT_ENVIRONMENT</td>
@@ -1126,6 +1128,7 @@ startKindCluster
 installK9s
 installAceCli
 configureAceDT
+registerApp
 finalizePostCreation
 printInfoSection</td>
 <td class="wrap">printInfoSection</td>
@@ -1144,8 +1147,8 @@ REPO_PATH</td>
 <td class="missing">None</td>
 <td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
-<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/7c50bce5c0cc890f_complete.js">7c50bce5c0cc...</td>
-<td class="warn tooltip" data-tip="Shared with: enablement-azure-webapp-otel, enablement-codespaces-template, demo-opentelemetry, demo-astroshop-problems, bizobs-journey-simulator">Shared (6)</td>
+<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/967ab7143d93e8c7_complete.js">967ab7143d93...</td>
+<td class="good">Unique</td>
 <td class="good">Yes</td>
 <td>13</td>
 <td>7</td>
@@ -1191,8 +1194,8 @@ REPO_PATH</td>
 <td class="missing">None</td>
 <td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
-<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/7c50bce5c0cc890f_complete.js">7c50bce5c0cc...</td>
-<td class="warn tooltip" data-tip="Shared with: enablement-azure-webapp-otel, enablement-codespaces-template, demo-opentelemetry, demo-astroshop-problems, ace-integration">Shared (6)</td>
+<td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/8b548f79bcd4dff0_complete.js">8b548f79bcd4...</td>
+<td class="good">Unique</td>
 <td class="good">Yes</td>
 <td>24</td>
 <td>13</td>
@@ -1216,10 +1219,10 @@ getting-started.md</td>
 <td><a href="https://github.com/dynatrace-wwse/bug-busters" target="_blank">bug-busters</a></td>
 <td class="neutral">2025-08-21</td>
 <td class="neutral">No</td>
-<td>4</td>
+<td>5</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_ENVIRONMENT<br>DT_INGEST_TOKEN<br>DT_OPERATOR_TOKEN<br>DT_APP_OAUTH_CLIENT_ID<br>DT_APP_OAUTH_CLIENT_SECRET</td>
+<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN<br>DT_APP_OAUTH_CLIENT_ID<br>DT_APP_OAUTH_CLIENT_SECRET</td>
 <td class="wrap">setUpTerminal
 startKindCluster
 installK9s
@@ -1242,7 +1245,7 @@ DT_HOST
 DT_TENANT
 TODO_PORT
 TODO_URL</td>
-<td class="good">16</td>
+<td class="good">19</td>
 <td class="good">Standard</td>
 <td class="missing">None</td>
 <td class="good tooltip" data-tip="fwd:[30100, 30200]; attr:[&#x27;30100&#x27;, &#x27;30200&#x27;]">Yes</td>
@@ -1311,12 +1314,12 @@ Settings &gt;</td>
 <td>1</td>
 <td class="tooltip" data-tip="shinojosa/dt-enablement:v1.2">shinojosa/dt-enablement:v1.2</td>
 <td class="missing tooltip" data-tip="None">0</td>
-<td class="secrets-cell warn">DT_OPERATOR_TOKEN<br>DT_ENVIRONMENT<br>DT_INGEST_TOKEN</td>
+<td class="secrets-cell warn">DT_INGEST_TOKEN<br>DT_ENVIRONMENT<br>DT_OPERATOR_TOKEN</td>
 <td class="wrap">setUpTerminal
-startKindCluster
+startCluster
 installK9s
 dynatraceDeployOperator
-deployCloudNative
+deployApplicationMonitoring
 deployTodoApp
 finalizePostCreation
 printInfoSection</td>
@@ -1326,7 +1329,7 @@ printInfoSection</td>
 <td class="good">19</td>
 <td class="good">Standard</td>
 <td class="missing">None</td>
-<td class="good tooltip" data-tip="fwd:[30100]; attr:[&#x27;30100&#x27;]">Yes</td>
+<td class="good tooltip" data-tip="fwd:[80, 30100]; attr:[&#x27;80&#x27;, &#x27;30100&#x27;]">Yes</td>
 <td class="good">Yes</td>
 <td class="good tooltip" data-tip="https://js-cdn.dynatrace.com/jstag/1612cf70810/bf81393wlb/ff78563295ff1e42_complete.js">ff78563295ff...</td>
 <td class="good">Unique</td>
@@ -1388,8 +1391,8 @@ resources.md</td>
 <td class="neutral">—</td>
 <td class="missing">N/A</td>
 <td class="neutral">—</td>
-<td class="missing">0</td>
-<td class="warn">No badges</td>
+<td class="good">6</td>
+<td class="good">Standard</td>
 <td class="missing">None</td>
 <td class="missing">No</td>
 <td class="missing">No</td>
