@@ -1,5 +1,15 @@
 [
   {
+    "repo": "enablement-kubernetes-101",
+    "title": "Kubernetes 101",
+    "desc": "Introduction to Kubernetes fundamentals with Dynatrace. Learn core concepts \u2014 pods, deployments, services \u2014 and observe a live cluster with full-stack monitoring.",
+    "tags": [
+      "kubernetes"
+    ],
+    "primaryTag": "kubernetes",
+    "duration": "1.5h"
+  },
+  {
     "repo": "enablement-kubernetes-opentelemetry",
     "title": "Kubernetes & OpenTelemetry",
     "desc": "Full-stack Kubernetes observability with OpenTelemetry. Instrument cloud-native workloads, collect distributed traces, metrics, and logs, and correlate with Dynatrace topology.",
