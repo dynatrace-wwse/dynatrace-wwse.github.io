@@ -134,6 +134,19 @@
     "isTemplate": true
   },
   {
+    "repo": "enablement-app-training-template",
+    "title": "App Training Template",
+    "desc": "Trainer-authoring scaffold for building interactive Dynatrace in-app enablement trainings on Orbital. Includes runnable examples for every interactive block type: shell verification, kubectl, DQL, assessments, and custom functions.",
+    "tags": [
+      "devops",
+      "orbital",
+      "dynatrace-app"
+    ],
+    "primaryTag": "devops",
+    "duration": "30min",
+    "isTemplate": true
+  },
+  {
     "repo": "enablement-kubernetes-opentelemetry-openpipeline",
     "title": "Kubernetes OTel & OpenPipeline",
     "desc": "Combine Kubernetes OpenTelemetry collection with OpenPipeline processing. Route, transform, and enrich telemetry data before it reaches Dynatrace.",
