@@ -250,17 +250,6 @@
     "duration": "1.5h"
   },
   {
-    "repo": "ace-integration",
-    "title": "ACE Integration",
-    "desc": "ACE integration patterns with Dynatrace. Connect Autonomous Cloud Enablement tools and workflows into the Dynatrace platform.",
-    "tags": [
-      "sandbox",
-      "demo"
-    ],
-    "primaryTag": "workflows",
-    "duration": "2h"
-  },
-  {
     "repo": "bizobs-journey-simulator",
     "title": "BizObs Journey Simulator",
     "desc": "Simulate realistic user journeys for business observability. Generate BizEvents, session replays, and funnel data to practice Dynatrace analytics.",
