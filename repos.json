@@ -194,16 +194,6 @@
     "duration": "2h"
   },
   {
-    "repo": "demo-agentic-ai-with-nvidia",
-    "title": "Agentic AI with NVIDIA",
-    "desc": "Hands-on demo showcasing agentic AI workflows powered by NVIDIA with full Dynatrace observability. Trace AI agents end-to-end, monitor model performance, and detect issues in real-time.",
-    "tags": [
-      "gen-ai"
-    ],
-    "primaryTag": "gen-ai",
-    "duration": "1.5h"
-  },
-  {
     "repo": "demo-mcp-unguard",
     "title": "MCP Unguard",
     "desc": "Security-focused demo using Model Context Protocol with the Unguard intentionally vulnerable application. Explore threat detection, attack surface analysis, and application security with Dynatrace.",
