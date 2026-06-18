@@ -4,7 +4,8 @@
     "title": "Kubernetes 101",
     "desc": "Introduction to Kubernetes fundamentals with Dynatrace. Learn core concepts \u2014 pods, deployments, services \u2014 and observe a live cluster with full-stack monitoring.",
     "tags": [
-      "kubernetes"
+      "kubernetes",
+      "dynatrace-app"
     ],
     "primaryTag": "kubernetes",
     "duration": "1.5h"
@@ -73,7 +74,8 @@
     "desc": "Introduction to log ingestion and analytics. Learn how to ingest, parse, and analyse logs at scale using OpenPipeline and Dynatrace DQL.",
     "tags": [
       "logs",
-      "kubernetes"
+      "kubernetes",
+      "dynatrace-app"
     ],
     "primaryTag": "logs",
     "duration": "2h"
@@ -95,7 +97,8 @@
     "desc": "Diagnose production issues in real-world scenarios using Dynatrace Live Debugger \u2014 no redeploys, no restarts. Step through running code with full observability context.",
     "tags": [
       "live-debugger",
-      "devops"
+      "devops",
+      "dynatrace-app"
     ],
     "primaryTag": "live-debugger",
     "duration": "2h"
