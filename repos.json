@@ -142,8 +142,7 @@
     "desc": "Trainer-authoring scaffold for building interactive Dynatrace in-app enablement trainings on Orbital. Includes runnable examples for every interactive block type: shell verification, kubectl, DQL, assessments, and custom functions.",
     "tags": [
       "devops",
-      "orbital",
-      "dynatrace-app"
+      "orbital"
     ],
     "primaryTag": "devops",
     "duration": "30min",
