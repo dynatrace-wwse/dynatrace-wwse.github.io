@@ -11,6 +11,17 @@
     "duration": "1.5h"
   },
   {
+    "repo": "enablement-dtwiz-101",
+    "title": "DTWiz 101",
+    "desc": "DTWiz 101 \u2014 install Kubernetes, deploy the Dynatrace Operator, break things on purpose and troubleshoot them with Dynatrace. Generated with the Open Enablement CLI, hardened by hand.",
+    "tags": [
+      "kubernetes",
+      "dynatrace-app"
+    ],
+    "primaryTag": "kubernetes",
+    "duration": "1h"
+  },
+  {
     "repo": "enablement-kubernetes-opentelemetry",
     "title": "Kubernetes & OpenTelemetry",
     "desc": "Full-stack Kubernetes observability with OpenTelemetry. Instrument cloud-native workloads, collect distributed traces, metrics, and logs, and correlate with Dynatrace topology.",
