@@ -13,13 +13,14 @@
   {
     "repo": "enablement-dtwiz-101",
     "title": "DTWiz 101",
-    "desc": "DTWiz 101 \u2014 install Kubernetes, deploy the Dynatrace Operator, break things on purpose and troubleshoot them with Dynatrace. Generated with the Open Enablement CLI, hardened by hand.",
+    "desc": "DTWiz 101 \u2014 the dtwiz CLI, hands-on: install it, point it at a tenant, analyze + recommend, deploy an OpenTelemetry-instrumented demo app, and watch traces land in Grail. Platform-token-native; ~20 min with quizzes.",
     "tags": [
-      "kubernetes",
+      "dtwiz",
+      "opentelemetry",
       "dynatrace-app"
     ],
-    "primaryTag": "kubernetes",
-    "duration": "1h"
+    "primaryTag": "dtwiz",
+    "duration": "20m"
   },
   {
     "repo": "enablement-kubernetes-opentelemetry",
