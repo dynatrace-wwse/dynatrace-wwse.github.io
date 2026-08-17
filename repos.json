@@ -5,7 +5,7 @@
     "desc": "Introduction to Kubernetes fundamentals with Dynatrace. Learn core concepts \u2014 pods, deployments, services \u2014 and observe a live cluster with full-stack monitoring.",
     "tags": [
       "kubernetes",
-      "dynatrace-app"
+      "enablement-app"
     ],
     "primaryTag": "kubernetes",
     "duration": "1.5h"
@@ -17,7 +17,7 @@
     "tags": [
       "dtwiz",
       "opentelemetry",
-      "dynatrace-app"
+      "enablement-app"
     ],
     "primaryTag": "dtwiz",
     "duration": "20m"
@@ -87,7 +87,7 @@
     "tags": [
       "logs",
       "kubernetes",
-      "dynatrace-app"
+      "enablement-app"
     ],
     "primaryTag": "logs",
     "duration": "2h"
@@ -110,7 +110,7 @@
     "tags": [
       "live-debugger",
       "devops",
-      "dynatrace-app"
+      "enablement-app"
     ],
     "primaryTag": "live-debugger",
     "duration": "2h"
