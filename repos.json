@@ -186,6 +186,18 @@
     "iconKey": "dql"
   },
   {
+    "repo": "enablement-bindplane-logs",
+    "title": "Log Pipelines with Bindplane",
+    "desc": "Build a log pipeline with Bindplane and Dynatrace. Install the Bindplane agent, shape logs in flight (add fields, mask sensitive data, route), deliver to Dynatrace, and parse with OpenPipeline. Extract metrics from logs and monitor Bindplane health with SFM.",
+    "tags": [
+      "logs",
+      "bindplane",
+      "openpipeline"
+    ],
+    "primaryTag": "logs",
+    "duration": "2h"
+  },
+  {
     "repo": "workshop-dynatrace-log-analytics",
     "title": "Log Analytics Workshop",
     "desc": "Workshop-format hands-on lab for log analytics. From ingestion to root-cause analysis \u2014 master the full log management lifecycle with Dynatrace.",
