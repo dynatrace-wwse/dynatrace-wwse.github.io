@@ -254,18 +254,6 @@
     "duration": "1.5h"
   },
   {
-    "repo": "demo-astroshop-problems",
-    "title": "Astroshop Problem Scenarios",
-    "desc": "Troubleshoot Astroshop problem scenarios with Dynatrace. Practice root-cause analysis on realistic failure modes across a distributed microservices stack.",
-    "tags": [
-      "kubernetes",
-      "live-debugger",
-      "sanbox"
-    ],
-    "primaryTag": "kubernetes",
-    "duration": "1.5h"
-  },
-  {
     "repo": "bizobs-journey-simulator",
     "title": "BizObs Journey Simulator",
     "desc": "Simulate realistic user journeys for business observability. Generate BizEvents, session replays, and funnel data to practice Dynatrace analytics.",
