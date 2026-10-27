@@ -254,6 +254,17 @@
     "duration": "1.5h"
   },
   {
+    "repo": "k8s-autoscaling-workshop",
+    "title": "K8s Autoscaling Workshop",
+    "desc": "Right-size Kubernetes workloads with Dynatrace Smartscape, DQL and Workflows.",
+    "tags": [
+      "kubernetes",
+      "devops"
+    ],
+    "primaryTag": "kubernetes",
+    "duration": "2h"
+  },
+  {
     "repo": "bizobs-journey-simulator",
     "title": "BizObs Journey Simulator",
     "desc": "Simulate realistic user journeys for business observability. Generate BizEvents, session replays, and funnel data to practice Dynatrace analytics.",
