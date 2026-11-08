@@ -150,14 +150,14 @@
   },
   {
     "repo": "enablement-app-training-template",
-    "title": "App Training Template",
-    "desc": "Trainer-authoring scaffold for building interactive Dynatrace in-app enablement trainings on Orbital. Includes runnable examples for every interactive block type: shell verification, kubectl, DQL, assessments, and custom functions.",
+    "title": "How to Create Trainings",
+    "desc": "The master workshop on creating Dynatrace trainings: kinds of workshops (single and multi-tenant, shared infrastructure), post-create, dtctl and Monaco, sizing, DQL and shell checks, validations and delivery to any tenant. Also the template to start a new training from.",
     "tags": [
       "devops",
       "orbital"
     ],
     "primaryTag": "devops",
-    "duration": "30min",
+    "duration": "2h",
     "isTemplate": true
   },
   {
